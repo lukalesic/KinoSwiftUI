@@ -18,7 +18,8 @@ struct InCinemasParentView: View {
     @ObservedObject var comingSoonVM = ComingSoonViewModel()
     
     var body: some View {
-        NavigationStack{
+        
+        NavigationView{
             VStack{
                 Picker("", selection: $viewModel.selectedMovies) {
                     ForEach(SelectedMovieContent.allCases, id: \.self) {

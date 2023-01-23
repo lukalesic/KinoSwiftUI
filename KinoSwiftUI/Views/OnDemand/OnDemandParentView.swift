@@ -12,7 +12,7 @@ struct OnDemandView: View {
     @ObservedObject var moviesViewModel = MoviesViewModel()
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 Picker("", selection: $viewModel.selectedContent) {
                     ForEach(SelectedContent.allCases, id: \.self) {

@@ -8,5 +8,7 @@
 import Foundation
 import SwiftUI
 
+
+
 let adaptiveColumns = [
     GridItem(.adaptive(minimum: 140))]

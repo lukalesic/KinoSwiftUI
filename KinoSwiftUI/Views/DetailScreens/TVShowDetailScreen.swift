@@ -19,11 +19,9 @@ struct TVShowDetailScreen: View {
                     AsyncImage(url: URL(string: photoURL)) { image in
                         image
                             .resizable()
-                        //.frame(width: screen.width / 1.3)
                             .cornerRadius(12)
                            .frame(maxWidth: 700)
                             .scaledToFit()
-                        //   .scaleEffect(0.4)
                             .shadow(radius: 6)
                             .padding()
                         

@@ -33,6 +33,8 @@ extension ServerAPI {
         }
     }
     
+    //example generic fetch data function - for testing
+/*
     static func fetchData<T: Decodable>(element: T) async throws -> T {
         let url = URL(string: "https://kinode-api.herokuapp.com/1.1.0/services/tv_shows")!
         let urlSession = URLSession.shared
@@ -41,5 +43,5 @@ extension ServerAPI {
         return try APIDecoder.decoder.decode(T.self, from: data)
     }
     
-    
+    */
 }

@@ -35,6 +35,10 @@ struct InCinemasParentView: View {
                     ActiveMovieView(viewModel: viewModel, cinemasViewModel: cinemasVM, comingSoonViewModel: comingSoonVM)                }
             }
         }
+        #if os(iOS)
+        .navigationViewStyle(StackNavigationViewStyle())
+        #endif
+
     }
 }
 

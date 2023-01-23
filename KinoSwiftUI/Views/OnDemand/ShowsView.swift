@@ -128,14 +128,16 @@ struct ShowsView: View {
                                             AsyncImage(url: URL(string: show.photoURL)){ image in
                                                 image
                                                     .resizable()
+                                                    .aspectRatio(contentMode: .fit)
                                                     .cornerRadius(9)
                                                     .shadow(radius: 9)
-                                                    .aspectRatio(contentMode: .fit)
+                                                 
                                             } placeholder: {
                                                 ProgressView()
                                             }
-                                            Text(show.title).lineLimit(1)
                                         }.buttonStyle(PlainButtonStyle())
+                                        Text(show.title).lineLimit(1)
+
                                     }
                                 }
                             }.padding()

@@ -29,6 +29,10 @@ struct OnDemandView: View {
                 }
             }
         }
+#if os(iOS)
+.navigationViewStyle(StackNavigationViewStyle())
+#endif
+
     }
 }
 

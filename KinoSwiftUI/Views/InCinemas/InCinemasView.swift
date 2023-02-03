@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct CinemasView: View {
-    @ObservedObject var viewModel: CinemasViewModel
+    @ObservedObject var viewModel: MovieBaseViewModel
 
     @State private var selectedMovie: Movie?
     
-    init(viewModel: CinemasViewModel) {
+    init(viewModel: MovieBaseViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        switch viewModel.loadingState {
+        switch viewModel.loadingContent {
         case .empty:
             Color.clear
                 .task {
-                    await viewModel.loadMovieData()
+                    await viewModel.loadContent()
                 }
             
         case .loading:
@@ -33,7 +33,7 @@ struct CinemasView: View {
             Text(error.localizedDescription)
             Button(action: {
                 Task {
-                    await viewModel.loadMovieData()
+                    await viewModel.loadContent()
                 }
             }, label: {
                 Text("Retry")

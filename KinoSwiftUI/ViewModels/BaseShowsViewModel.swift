@@ -17,7 +17,7 @@ enum TvShowLoadingState {
 @MainActor
 class ShowsViewModel: ObservableObject {
     @Published private(set) var loadingState: TvShowLoadingState = .empty
-    let repo = TvShowRepository()
+    let repo = BaseRepository()
     
     @Published var tvShows = [TvShow]()
     @Published var spotlight = [Spotlight]()
@@ -35,7 +35,7 @@ class ShowsViewModel: ObservableObject {
         Task{
             self.loadingState = .loading
             do{
-                self.show = try await self.repo.fetchShows()
+                self.show = try await self.repo.fetchAllContent(element: show, type: .tvShows)
                 self.categories = self.show!.categories
                 for show in self.categories.first!.tvShows {
                     self.tvShows.append(show)
@@ -58,21 +58,12 @@ class ShowsViewModel: ObservableObject {
                 do{
                     self.hasShownProgressView = true
 
-                    try await self.repo.loadNext()
-                    self.show = try await self.repo.fetchShows()
+                    try await self.repo.loadMoreContent()
+                    self.show = try await self.repo.fetchAllContent(element: show, type: .tvShows)
                     for show in self.show!.categories.first!.tvShows {
                         self.tvShows.append(show)
                     }
 
-                }
-            }
-        }
-        
-        func loadPrevious() async {
-            Task {
-                do{
-                    try await self.repo.loadPrevious()
-                    await self.loadData()
                 }
             }
         }

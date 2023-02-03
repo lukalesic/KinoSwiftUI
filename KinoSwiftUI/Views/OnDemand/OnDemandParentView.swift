@@ -9,7 +9,8 @@ import SwiftUI
 struct OnDemandView: View {
     @ObservedObject var viewModel = OnDemandViewModel()
     @ObservedObject var showsViewModel = ShowsViewModel()
-    @ObservedObject var moviesViewModel = MoviesViewModel()
+    @ObservedObject var moviesViewModel = MovieBaseViewModel(type: ServerAPI.movies)
+
 
     var body: some View {
         NavigationView {
@@ -39,7 +40,8 @@ struct OnDemandView: View {
 struct ActiveView: View {
     @ObservedObject var viewModel: OnDemandViewModel
     @ObservedObject var showsViewModel: ShowsViewModel
-    @ObservedObject var moviesViewModel: MoviesViewModel
+    @ObservedObject var moviesViewModel: MovieBaseViewModel
+
 
     var body: some View {
         switch viewModel.selectedContent {

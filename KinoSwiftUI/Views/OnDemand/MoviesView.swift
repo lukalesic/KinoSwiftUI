@@ -12,18 +12,18 @@ import SwiftUI
 struct MoviesView: View {
     
     @State private var selectedMovie: Movie?
-    @ObservedObject var viewModel: MoviesViewModel
+    @ObservedObject var viewModel: MovieBaseViewModel
     
-    init(viewModel: MoviesViewModel) {
+    init(viewModel: MovieBaseViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        switch viewModel.loadingState {
+        switch viewModel.loadingContent {
         case .empty:
             Color.clear
                 .task {
-                    await viewModel.loadMovieData()
+                    await viewModel.loadContent()
                 }
             
         case.loading:
@@ -36,7 +36,7 @@ struct MoviesView: View {
             Text(error.localizedDescription)
             Button(action: {
                 Task {
-                    await viewModel.loadMovieData()
+                    await viewModel.loadContent()
                 }
             }, label: {
                 Text("Retry")

@@ -7,9 +7,25 @@
 
 import Foundation
 
+enum MoviesLoadingState {
+  case empty
+  case loading
+  case error(error: Error)
+  case populated
+}
+
 @MainActor
-class MovieBaseViewModel {
+class MovieBaseViewModel: ObservableObject {
     var baseItem: Welcome?
+    var type: ServerAPI = {
+        return ServerAPI.movies
+    }()
+    
+    init(baseItem: Welcome? = nil, type: ServerAPI) {
+        self.baseItem = baseItem
+        self.type = type
+    }
+    
     let repo = BaseRepository()
     
     @Published private(set) var loadingContent: MoviesLoadingState = .empty
@@ -25,7 +41,7 @@ class MovieBaseViewModel {
         Task{
             self.loadingContent = .loading
             do{
-                self.baseItem = try await self.repo.fetchContent(element: baseItem)
+                self.baseItem = try await self.repo.fetchAllContent(element: baseItem, type: type)
                 self.categories = self.baseItem!.categories
                 self.movies = self.categories.first!.movies
                 self.spotlight.removeAll()

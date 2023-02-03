@@ -35,7 +35,7 @@ class ShowsViewModel: ObservableObject {
         Task{
             self.loadingState = .loading
             do{
-                self.show = try await self.repo.fetchAllContent(element: show, type: .tvShows)
+                self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
                 self.categories = self.show!.categories
                 for show in self.categories.first!.tvShows {
                     self.tvShows.append(show)
@@ -59,7 +59,7 @@ class ShowsViewModel: ObservableObject {
                     self.hasShownProgressView = true
 
                     try await self.repo.loadMoreContent()
-                    self.show = try await self.repo.fetchAllContent(element: show, type: .tvShows)
+                    self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
                     for show in self.show!.categories.first!.tvShows {
                         self.tvShows.append(show)
                     }

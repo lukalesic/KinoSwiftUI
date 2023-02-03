@@ -14,7 +14,7 @@ class BaseRepository {
     let uuid = UUID()
     var url = URL(string: "")
     
-    func fetchAllContent<T: Decodable>(element: T, type: ServerAPI) async throws -> T {
+    func fetchContent<T: Decodable>(element: T, type: ServerAPI) async throws -> T {
         
         if type == .tvShows {
             url = URL(string: "\(type.baseURL)\(type.path)?offset=\(offset)&limit=\(limit)")!

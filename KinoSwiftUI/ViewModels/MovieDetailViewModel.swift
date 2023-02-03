@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class MovieDetailViewModel: ObservableObject {
-    let repo = MovieDetailRepository()
+    let repo = BaseRepository()
     
     @Published var movieDetail: MovieDetail?
     @Published var movies = [Movie]()
@@ -21,7 +21,7 @@ class MovieDetailViewModel: ObservableObject {
     func loadMovieData() async {
             Task{
                 do{
-                    self.movieDetail = try await self.repo.fetchMovieDetails()
+                    self.movieDetail = try await self.repo.fetchContent(element: movieDetail, type: .movieDetail)
 }
                 catch{
                     print(error)

@@ -41,7 +41,7 @@ class MovieBaseViewModel: ObservableObject {
         Task{
             self.loadingContent = .loading
             do{
-                self.baseItem = try await self.repo.fetchAllContent(element: baseItem, type: type)
+                self.baseItem = try await self.repo.fetchContent(element: baseItem, type: type)
                 self.categories = self.baseItem!.categories
                 self.movies = self.categories.first!.movies
                 self.spotlight.removeAll()

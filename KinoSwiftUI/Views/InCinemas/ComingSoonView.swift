@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ComingSoonView: View {
     @ObservedObject var viewModel: ComingSoonViewModel
+
+    @State private var selectedMovie: Movie?
     
     init(viewModel: ComingSoonViewModel) {
         self.viewModel = viewModel
@@ -79,7 +81,8 @@ struct ComingSoonView: View {
                         LazyVGrid(columns: adaptiveColumns) {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating)){
+                                    
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.posterURL)){ image in
                                             image
                                                 .resizable()
@@ -97,7 +100,6 @@ struct ComingSoonView: View {
                                         .font(.system(size: 12))
                                     
                                     HStack{
-                                        //  ForEach(movie.genre, id: \.self) {genre in
                                         Text(movie.genre.first ?? "")
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)

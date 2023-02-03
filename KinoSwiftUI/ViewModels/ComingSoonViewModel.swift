@@ -18,7 +18,6 @@ enum ComingSoonLoadingState {
 class ComingSoonViewModel: ObservableObject {
         @Published private(set) var loadingState: ComingSoonLoadingState = .empty
         let repo = ComingSoonRepository()
-        //spojiti dva viewmodela i dodati init u koji ubacujem repozitorij?
         @Published var welcome: Welcome?
         @Published var movies = [Movie]()
         @Published var spotlight = [Spotlight]()

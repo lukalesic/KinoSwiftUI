@@ -1,21 +1,14 @@
 //
-//  Movie.swift
-//  Kino
+//  MovieDetail.swift
+//  KinoSwiftUI
 //
-//  Created by Luka Lešić on 10.01.2023..
+//  Created by Luka Lešić on 31.01.2023..
 //
 
 import Foundation
+// MARK: - Show
 
-// MARK: - Movie
-struct Movie: Codable, Hashable {
-    static func == (lhs: Movie, rhs: Movie) -> Bool {
-        return lhs.movieID == rhs.movieID
-    }
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(movieID)
-    }
-    
+struct MovieDetail: Codable {
     let movieCacheDate: String
     let path, contentURL: String
     let movieID: Int
@@ -23,11 +16,18 @@ struct Movie: Codable, Hashable {
     let genre: [String]
     let pgRating: Int
     let posterURL, originalPosterURL, photoURL: String
-    let stats: MovieStats
-    let ratings: Ratings
-    let media: [JSONAny]?
+    let summary: String
+    let stats: StatsDetail
+    let ratings: RatingDetails
+    let media: [JSONAny]
+    let movieDetailsCacheData: String
+    let people: [Person]
+    let similarMovies: [JSONAny]
     let updatedAt: Int
-    let updatedAtString: String
+    let updatedAtString, servicesCacheDate: String
+    let services: Services
+    let cinemas: [Cinema]
+    let showtimes: [Showtime]
 
     enum CodingKeys: String, CodingKey {
         case movieCacheDate = "movie_cache_date"
@@ -40,9 +40,13 @@ struct Movie: Codable, Hashable {
         case posterURL = "poster_url"
         case originalPosterURL = "original_poster_url"
         case photoURL = "photo_url"
-        case stats, ratings, media
+        case summary, stats, ratings, media
+        case movieDetailsCacheData = "movie_details_cache_data"
+        case people
+        case similarMovies = "similar_movies"
         case updatedAt = "updated_at"
         case updatedAtString = "updated_at_string"
+        case servicesCacheDate = "services_cache_date"
+        case services, cinemas, showtimes
     }
 }
-

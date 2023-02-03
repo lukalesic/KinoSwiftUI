@@ -11,11 +11,13 @@ import SwiftUI
 
 struct MoviesView: View {
     
+    @State private var selectedMovie: Movie?
     @ObservedObject var viewModel: MoviesViewModel
     
     init(viewModel: MoviesViewModel) {
         self.viewModel = viewModel
     }
+    
     var body: some View {
         switch viewModel.loadingState {
         case .empty:
@@ -148,9 +150,8 @@ struct MoviesView: View {
                         LazyVGrid(columns: adaptiveColumns) {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
-                                    NavigationLink {
-                                        MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating)
-                                    } label: {
+                                    
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.photoURL)){ image in
                                             image
                                                 .resizable()
@@ -159,8 +160,8 @@ struct MoviesView: View {
                                                 .aspectRatio(contentMode: .fit)
                                         } placeholder: {
                                             ProgressView()
-                                        }
-                                    }.buttonStyle(PlainButtonStyle())
+                                            
+                                        } }.buttonStyle(PlainButtonStyle())
                                     Text(movie.title).lineLimit(1)
                                 }
                             }

@@ -8,7 +8,14 @@
 import Foundation
 
 // MARK: - TvShow
-struct TvShow: Codable {
+struct TvShow: Codable, Hashable {
+    static func == (lhs: TvShow, rhs: TvShow) -> Bool {
+        return lhs.tvShowID == rhs.tvShowID
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(tvShowID)
+    }
+    
     let movieCacheDate: String
     let path: String
     let tvShowID: Int
@@ -34,4 +41,6 @@ struct TvShow: Codable {
         case updatedAt = "updated_at"
         case updatedAtString = "updated_at_string"
     }
+    
+    
 }

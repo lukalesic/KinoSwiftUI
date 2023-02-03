@@ -13,6 +13,9 @@ struct KinoApp: App {
     let center = UNUserNotificationCenter.current()
     
     init() {
+        
+        let uuid = UUID()
+        print(uuid)
         center.requestAuthorization(options: [.sound , .alert , .badge ], completionHandler: { (granted, error) in
             if let error = error {
                 // Handle the error here.

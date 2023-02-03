@@ -11,9 +11,8 @@ import Combine
 struct ShowsView: View {
     
     @ObservedObject var viewModel: ShowsViewModel
-    @State var hasAppeared = false
-    @State var offset: CGFloat = 0
-    
+    @State var selectedShow: TvShow?
+
     
     init(viewModel: ShowsViewModel) {
         self.viewModel = viewModel
@@ -25,7 +24,6 @@ struct ShowsView: View {
         case .empty:
             Color.clear
                 .task {
-                    self.hasAppeared = true
                     await viewModel.loadData()
                 }
             
@@ -45,6 +43,7 @@ struct ShowsView: View {
             }).buttonStyle(.borderedProminent)
             
         case .populated:
+            
             ScrollView{
                 VStack(spacing: 0.6){
                     ForEach($viewModel.spotlight, id: \.spotlightID) { $spotlight in
@@ -146,11 +145,12 @@ struct ShowsView: View {
 #else
                         //macOS specific
                         LazyVGrid(columns: adaptiveColumns) {
-                            ForEach(category.tvShows, id: \.title)  { show in
+                            ForEach(category.tvShows, id: \.self)  { show in
+                                
                                 VStack{
-                                    NavigationLink {
-                                        TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating)
-                                    } label: {
+
+                                   NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating), tag: show, selection: $selectedShow) {
+                       
                                         AsyncImage(url: URL(string: show.photoURL)){ image in
                                             image
                                                 .resizable()
@@ -158,11 +158,20 @@ struct ShowsView: View {
                                                 .shadow(radius: 9)
                                                 .aspectRatio(contentMode: .fit)
                                         } placeholder: {
-                                            ProgressView()
+
                                         }
-                                    }.buttonStyle(PlainButtonStyle())
+                                       
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                   
+                                 
                                     Text(show.title).lineLimit(1)
                                 }
+                                .onTapGesture {
+                                         self.selectedShow = show
+                                    print(selectedShow!.title)
+                                  }
+
                             }
                         }.padding()
 #endif

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CinemasView: View {
     @ObservedObject var viewModel: CinemasViewModel
+
+    @State private var selectedMovie: Movie?
     
     init(viewModel: CinemasViewModel) {
         self.viewModel = viewModel
@@ -78,7 +80,8 @@ struct CinemasView: View {
                         LazyVGrid(columns: adaptiveColumns) {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating)){
+                                    
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.posterURL)){ image in
                                             image
                                                 .resizable()
@@ -90,7 +93,6 @@ struct CinemasView: View {
                                             ProgressView()
                                         }
                                     }.buttonStyle(PlainButtonStyle())
-                                    
                                     Text(movie.title)
                                         .lineLimit(1)
                                         .font(.system(size: 12))

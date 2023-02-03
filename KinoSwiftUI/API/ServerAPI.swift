@@ -12,6 +12,7 @@ enum ServerAPI {
     case movies
     case inCinemas
     case comingSoon
+    case movieDetail
 }
 
 extension ServerAPI {
@@ -30,6 +31,8 @@ extension ServerAPI {
             return "/services/movies"
         case .comingSoon:
             return "/cinemas/coming_soon?latitude=52.52&longitude=13.4"
+        case .movieDetail:
+            return "/data/movies/658032?latitude=52.52&longitude=13.4"
         }
     }
     

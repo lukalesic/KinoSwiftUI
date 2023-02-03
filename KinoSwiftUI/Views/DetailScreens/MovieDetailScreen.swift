@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct MovieDetailScreen: View {
+    @ObservedObject var viewModel = MovieDetailViewModel()
+    
     let photoURL: String
     let title: String
     let pgRating: Int
+    //let summary: String
+    
     
     var body: some View {
             ScrollView{
@@ -33,6 +37,8 @@ struct MovieDetailScreen: View {
                 
                 Text("PG Rating: \(pgRating)")
                     .font(.system(.footnote))
+                
+               // Text(summary)
                 Spacer()
             }
     }

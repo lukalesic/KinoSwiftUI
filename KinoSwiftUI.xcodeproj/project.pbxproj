@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF3AF39D29895A1C00FA9452 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AF39C29895A1C00FA9452 /* BaseRepository.swift */; };
+		DF3AF39F29895A7500FA9452 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AF39E29895A7500FA9452 /* BaseViewModel.swift */; };
+		DF58DF00298922740089E0AA /* MovieDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DEFF298922740089E0AA /* MovieDetailRepository.swift */; };
+		DF58DF02298922B70089E0AA /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF01298922B70089E0AA /* MovieDetailViewModel.swift */; };
+		DF58DF042989333F0089E0AA /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF032989333F0089E0AA /* MovieDetail.swift */; };
+		DF58DF06298933610089E0AA /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF05298933610089E0AA /* Cinema.swift */; };
+		DF58DF0A2989338E0089E0AA /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF092989338E0089E0AA /* Person.swift */; };
+		DF58DF0C298933EA0089E0AA /* Showtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF0B298933EA0089E0AA /* Showtime.swift */; };
+		DF58DF0E298933F80089E0AA /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF0D298933F80089E0AA /* Services.swift */; };
+		DF58DF102989340A0089E0AA /* GroupDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF0F2989340A0089E0AA /* GroupDatum.swift */; };
+		DF58DF12298934100089E0AA /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF11298934100089E0AA /* Datum.swift */; };
+		DF58DF14298935670089E0AA /* RatingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF13298935670089E0AA /* RatingDetail.swift */; };
+		DF58DF162989357D0089E0AA /* StatsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF152989357D0089E0AA /* StatsDetail.swift */; };
 		DFAF48DE297AC5B900C457DC /* KinoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAF48DD297AC5B900C457DC /* KinoSwiftUIApp.swift */; };
 		DFAF48E2297AC5BD00C457DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFAF48E1297AC5BD00C457DC /* Assets.xcassets */; };
 		DFAF48E6297AC5BD00C457DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFAF48E5297AC5BD00C457DC /* Preview Assets.xcassets */; };
@@ -49,6 +62,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF3AF39C29895A1C00FA9452 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		DF3AF39E29895A7500FA9452 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		DF58DEFF298922740089E0AA /* MovieDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRepository.swift; sourceTree = "<group>"; };
+		DF58DF01298922B70089E0AA /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		DF58DF032989333F0089E0AA /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		DF58DF05298933610089E0AA /* Cinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
+		DF58DF092989338E0089E0AA /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DF58DF0B298933EA0089E0AA /* Showtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showtime.swift; sourceTree = "<group>"; };
+		DF58DF0D298933F80089E0AA /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		DF58DF0F2989340A0089E0AA /* GroupDatum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDatum.swift; sourceTree = "<group>"; };
+		DF58DF11298934100089E0AA /* Datum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
+		DF58DF13298935670089E0AA /* RatingDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingDetail.swift; sourceTree = "<group>"; };
+		DF58DF152989357D0089E0AA /* StatsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetail.swift; sourceTree = "<group>"; };
 		DFAF48DA297AC5B900C457DC /* KinoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KinoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFAF48DD297AC5B900C457DC /* KinoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoSwiftUIApp.swift; sourceTree = "<group>"; };
 		DFAF48E1297AC5BD00C457DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,9 +183,11 @@
 				DFAF4908297AC6D200C457DC /* ShowsViewModel.swift */,
 				DFAF490A297AC6DF00C457DC /* InCinemasViewModel.swift */,
 				DFAF490C297AC6EB00C457DC /* MoviesViewModel.swift */,
+				DF58DF01298922B70089E0AA /* MovieDetailViewModel.swift */,
 				DFAF490E297AC6F700C457DC /* ComingSoonViewModel.swift */,
 				DFAF4910297AC70200C457DC /* OnDemandViewModel.swift */,
 				DFAF4912297AC70F00C457DC /* InCinemasParentViewModel.swift */,
+				DF3AF39E29895A7500FA9452 /* BaseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -193,6 +221,15 @@
 				DFAF48F2297AC61400C457DC /* Welcome.swift */,
 				DFAF48F4297AC61A00C457DC /* Category.swift */,
 				DFAF48F6297AC62300C457DC /* Movie.swift */,
+				DF58DF0B298933EA0089E0AA /* Showtime.swift */,
+				DF58DF0D298933F80089E0AA /* Services.swift */,
+				DF58DF0F2989340A0089E0AA /* GroupDatum.swift */,
+				DF58DF11298934100089E0AA /* Datum.swift */,
+				DF58DF032989333F0089E0AA /* MovieDetail.swift */,
+				DF58DF13298935670089E0AA /* RatingDetail.swift */,
+				DF58DF152989357D0089E0AA /* StatsDetail.swift */,
+				DF58DF05298933610089E0AA /* Cinema.swift */,
+				DF58DF092989338E0089E0AA /* Person.swift */,
 				DFAF48F8297AC62A00C457DC /* MovieStats.swift */,
 				DFAF48FA297AC63900C457DC /* JSONEncodingHelper.swift */,
 			);
@@ -228,7 +265,9 @@
 				DFAF4918297AC75300C457DC /* TvShowRepository.swift */,
 				DFAF491A297AC75F00C457DC /* InCinemasRepository.swift */,
 				DFAF491C297AC76A00C457DC /* MovieRepository.swift */,
+				DF58DEFF298922740089E0AA /* MovieDetailRepository.swift */,
 				DFAF491E297AC77900C457DC /* ComingSoonRepository.swift */,
+				DF3AF39C29895A1C00FA9452 /* BaseRepository.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -333,11 +372,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFAF4901297AC66B00C457DC /* TVShows.swift in Sources */,
+				DF58DF12298934100089E0AA /* Datum.swift in Sources */,
 				DFAF4929297AC8F300C457DC /* TVShowDetailScreen.swift in Sources */,
 				DFAF491B297AC75F00C457DC /* InCinemasRepository.swift in Sources */,
 				DFAF491D297AC76A00C457DC /* MovieRepository.swift in Sources */,
+				DF58DF06298933610089E0AA /* Cinema.swift in Sources */,
 				DFAF4905297AC67700C457DC /* Stats.swift in Sources */,
+				DF58DF02298922B70089E0AA /* MovieDetailViewModel.swift in Sources */,
 				DFAF4913297AC70F00C457DC /* InCinemasParentViewModel.swift in Sources */,
+				DF58DF042989333F0089E0AA /* MovieDetail.swift in Sources */,
 				DFAF4934297AC9A800C457DC /* ComingSoonView.swift in Sources */,
 				DFAF4936297AC9B600C457DC /* CinemasView.swift in Sources */,
 				DFAF48F9297AC62A00C457DC /* MovieStats.swift in Sources */,
@@ -347,19 +390,27 @@
 				DFAF4938297AC9CE00C457DC /* InCinemasParentView.swift in Sources */,
 				DFAF493C297AC9EF00C457DC /* ShowsView.swift in Sources */,
 				DFAF491F297AC77900C457DC /* ComingSoonRepository.swift in Sources */,
+				DF58DF102989340A0089E0AA /* GroupDatum.swift in Sources */,
+				DF58DF0A2989338E0089E0AA /* Person.swift in Sources */,
 				DFAF4917297AC73D00C457DC /* ServerAPI.swift in Sources */,
+				DF3AF39D29895A1C00FA9452 /* BaseRepository.swift in Sources */,
 				DFAF492F297AC93600C457DC /* ImageBlurView.swift in Sources */,
+				DF58DF00298922740089E0AA /* MovieDetailRepository.swift in Sources */,
 				DFAF48F3297AC61400C457DC /* Welcome.swift in Sources */,
 				DFAF48DE297AC5B900C457DC /* KinoSwiftUIApp.swift in Sources */,
 				DFAF4911297AC70200C457DC /* OnDemandViewModel.swift in Sources */,
+				DF58DF0E298933F80089E0AA /* Services.swift in Sources */,
 				DFAF4903297AC67100C457DC /* Ratings.swift in Sources */,
 				DFAF48FF297AC66600C457DC /* Categories.swift in Sources */,
+				DF3AF39F29895A7500FA9452 /* BaseViewModel.swift in Sources */,
 				DFAF492D297AC92A00C457DC /* SidebarView.swift in Sources */,
 				DFAF493E297AC9FF00C457DC /* OnDemandParentView.swift in Sources */,
 				DFAF4909297AC6D200C457DC /* ShowsViewModel.swift in Sources */,
 				DFAF4907297AC67E00C457DC /* Spotlight.swift in Sources */,
+				DF58DF14298935670089E0AA /* RatingDetail.swift in Sources */,
 				DFAF490F297AC6F700C457DC /* ComingSoonViewModel.swift in Sources */,
 				DFAF493A297AC9E400C457DC /* MoviesView.swift in Sources */,
+				DF58DF0C298933EA0089E0AA /* Showtime.swift in Sources */,
 				DFAF48F5297AC61A00C457DC /* Category.swift in Sources */,
 				DFAF4919297AC75300C457DC /* TvShowRepository.swift in Sources */,
 				DFAF4927297AC8E700C457DC /* MovieDetailScreen.swift in Sources */,
@@ -368,6 +419,7 @@
 				DFAF48F7297AC62300C457DC /* Movie.swift in Sources */,
 				DFAF492B297AC91200C457DC /* ContentView.swift in Sources */,
 				DFAF490D297AC6EB00C457DC /* MoviesViewModel.swift in Sources */,
+				DF58DF162989357D0089E0AA /* StatsDetail.swift in Sources */,
 				DFAF4923297AC79600C457DC /* Error+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

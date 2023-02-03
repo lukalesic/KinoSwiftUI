@@ -24,6 +24,7 @@ class ShowsViewModel: ObservableObject {
     @Published var categories = [Category]()
     @Published var show : Show?
     private var cancellable: AnyCancellable?
+    var selectedOption: TvShow?
     
     @Published var hasShownProgressView = false
 
@@ -59,7 +60,6 @@ class ShowsViewModel: ObservableObject {
 
                     try await self.repo.loadNext()
                     self.show = try await self.repo.fetchShows()
-                   // await self.loadData()
                     for show in self.show!.categories.first!.tvShows {
                         self.tvShows.append(show)
                     }

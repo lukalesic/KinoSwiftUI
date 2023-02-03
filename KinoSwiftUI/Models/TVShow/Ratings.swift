@@ -14,6 +14,7 @@ struct Ratings: Codable {
     let imdbRating: Double
     let watchlistCount: Int
 
+
     enum CodingKeys: String, CodingKey {
         case popularity
         case imdbID = "imdb_id"

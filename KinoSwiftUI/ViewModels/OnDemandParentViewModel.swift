@@ -8,5 +8,5 @@
 import Foundation
 
 class OnDemandViewModel: ObservableObject {
-    @Published var selectedContent = SelectedContent.shows
+    @Published var selectedContent = SelectedContent.movies
 }

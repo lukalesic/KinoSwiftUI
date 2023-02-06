@@ -9,33 +9,32 @@ import Foundation
 
 @MainActor
 class MovieDetailViewModel: ObservableObject {
-  //  let repo = BaseRepository()
-    let repo = MovieDetailTestRepo()
+    let repo = DetailRepo()
     
-    @Published var movieDetail: MovieDetailTest?
-   // @Published var movieDetail = [MovieDetail]()
-
+    @Published var movieDetail: MovieDetail?
+    
     @Published var movies = [Movie]()
-    @Published var categories = [MovieCategory]()
     @Published var loadMore: String?
     @Published var summary: String?
     @Published var movieID: Int?
-
+    @Published var cinemas: [Cinema]?
+    @Published var people: [Person]?
     
-    func loadMovieData() async {
-            Task{
-                do{
-                   // self.movieDetail = try await self.repo.fetchContent(element: movieDetail, type: .movieDetail)
-                   self.movieDetail = try await self.repo.fetchMovieDetailContent()
-                    self.movieID = try await self.repo.fetchMovieDetailContent().movieID
-
-                    print("MOVIEID")
-                    print(movieID)
-                    self.summary = movieDetail?.summary
-}
-                catch{
-                    print(error)
-                }
+    var id: Int?
+    
+    func loadMovieData(id: Int) async {
+        Task{
+            do{
+                self.movieDetail = try await self.repo.fetchMovieDetailContent(id: id)
+                self.movieID = self.movieDetail?.movieID
+                self.summary = movieDetail?.summary
+                self.cinemas = self.movieDetail?.cinemas
+                self.people = self.movieDetail?.people
+                
             }
+            catch{
+                print(error)
+            }
+        }
     }
 }

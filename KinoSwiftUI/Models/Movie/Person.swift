@@ -9,10 +9,10 @@ import Foundation
 
 
 // MARK: - Person
-struct Person: Codable {
+struct Person: Codable, Hashable {
     let id: Int
     let name: String
-    let role: Role
+    let role: Role?
     let photoURL: String
     let order: Int
     let characterName: [String]
@@ -29,4 +29,5 @@ enum Role: String, Codable {
     case actor = "actor"
     case director = "director"
     case producer = "producer"
+    case writer = "writer"
 }

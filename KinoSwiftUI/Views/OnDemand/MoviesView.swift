@@ -55,8 +55,6 @@ struct MoviesView: View {
                                 .shadow(radius: 9)
                                 .padding(.horizontal)
                         } placeholder: {
-                            ProgressView()
-                                .frame(width: 100, height: 220)
                         }
                         
                         VStack{
@@ -86,7 +84,7 @@ struct MoviesView: View {
                             
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 NavigationLink {
-                                    MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating)
+                                    MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID)
                                 } label: {
                                     ZStack{
                                         AsyncImage(url: URL(string: movie.photoURL)){ image in
@@ -96,7 +94,6 @@ struct MoviesView: View {
                                                 .shadow(radius: 6)
                                             
                                         } placeholder: {
-                                            ProgressView()
                                         }
                                         
                                         LinearGradient(colors: [.black.opacity(0), .black.opacity(0.55)],
@@ -127,7 +124,7 @@ struct MoviesView: View {
                                 ForEach(category.movies, id: \.movieID)  { movie in
                                     VStack{
                                         NavigationLink {
-                                            MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating)
+                                            MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID)
                                         } label: {
                                             AsyncImage(url: URL(string: movie.photoURL)){ image in
                                                 image
@@ -136,7 +133,6 @@ struct MoviesView: View {
                                                     .shadow(radius: 9)
                                                     .aspectRatio(contentMode: .fit)
                                             } placeholder: {
-                                                ProgressView()
                                             }
                                             Text(movie.title).lineLimit(1)
                                         }.buttonStyle(PlainButtonStyle())
@@ -151,7 +147,7 @@ struct MoviesView: View {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.photoURL)){ image in
                                             image
                                                 .resizable()
@@ -159,7 +155,6 @@ struct MoviesView: View {
                                                 .shadow(radius: 9)
                                                 .aspectRatio(contentMode: .fit)
                                         } placeholder: {
-                                            ProgressView()
                                             
                                         } }.buttonStyle(PlainButtonStyle())
                                     Text(movie.title).lineLimit(1)

@@ -53,8 +53,6 @@ struct ShowsView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height: 220)
                             } placeholder: {
-                                ProgressView()
-                                    .frame(width: 100, height: 220)
                             }
                             
                             ImageBlurView()
@@ -85,7 +83,7 @@ struct ShowsView: View {
                         if UIDevice.current.userInterfaceIdiom != .pad {
                             ForEach(viewModel.tvShows, id: \.title)  { show in
                                 NavigationLink {
-                                    TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating)
+                                    TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID)
                                 } label: {
                                     ZStack{
                                         AsyncImage(url: URL(string: show.photoURL)){ image in
@@ -95,7 +93,6 @@ struct ShowsView: View {
                                                 .shadow(radius: 6)
                                             
                                         } placeholder: {
-                                            // ProgressView()
                                         }
                                         
                                         LinearGradient(colors: [.black.opacity(0), .black.opacity(0.55)],
@@ -122,7 +119,7 @@ struct ShowsView: View {
                                 ForEach(category.tvShows, id: \.title)  { show in
                                     VStack{
                                         NavigationLink {
-                                            TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating)
+                                            TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID)
                                         } label: {
                                             AsyncImage(url: URL(string: show.photoURL)){ image in
                                                 image
@@ -132,7 +129,6 @@ struct ShowsView: View {
                                                     .shadow(radius: 9)
                                                  
                                             } placeholder: {
-                                                ProgressView()
                                             }
                                         }.buttonStyle(PlainButtonStyle())
                                         Text(show.title).lineLimit(1)
@@ -149,7 +145,7 @@ struct ShowsView: View {
                                 
                                 VStack{
 
-                                   NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating), tag: show, selection: $selectedShow) {
+                                    NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID), tag: show, selection: $selectedShow) {
                        
                                         AsyncImage(url: URL(string: show.photoURL)){ image in
                                             image

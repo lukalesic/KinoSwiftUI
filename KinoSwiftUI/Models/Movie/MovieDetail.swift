@@ -9,7 +9,6 @@ import Foundation
 // MARK: - Show
 
 struct MovieDetail: Codable {
-    let movieCacheDate: String
     let path, contentURL: String
     let movieID: Int
     let originalTitle, title: String
@@ -17,20 +16,18 @@ struct MovieDetail: Codable {
     let pgRating: Int
     let posterURL, originalPosterURL, photoURL: String
     let summary: String
-    let stats: StatsDetail
     let ratings: RatingDetails
-    let media: [JSONAny]
+    let media: [JSONAny]?
     let movieDetailsCacheData: String
-    let people: [Person]
-    let similarMovies: [JSONAny]
+    let people: [Person]?
+    let similarMovies: [JSONAny]?
     let updatedAt: Int
     let updatedAtString, servicesCacheDate: String
     let services: Services
-    let cinemas: [Cinema]
-    let showtimes: [Showtime]
+    let cinemas: [Cinema]?
+    let showtimes: [Showtime]?
 
     enum CodingKeys: String, CodingKey {
-        case movieCacheDate = "movie_cache_date"
         case path
         case contentURL = "content_url"
         case movieID = "movie_id"
@@ -40,9 +37,9 @@ struct MovieDetail: Codable {
         case posterURL = "poster_url"
         case originalPosterURL = "original_poster_url"
         case photoURL = "photo_url"
-        case summary, stats, ratings, media
+        case summary, ratings, media
         case movieDetailsCacheData = "movie_details_cache_data"
-        case people
+        case people = "people"
         case similarMovies = "similar_movies"
         case updatedAt = "updated_at"
         case updatedAtString = "updated_at_string"

@@ -52,8 +52,6 @@ struct ComingSoonView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height: 220)
                             } placeholder: {
-                                ProgressView()
-                                    .frame(width: 100, height: 220)
                             }
                             ImageBlurView()
                             
@@ -82,7 +80,7 @@ struct ComingSoonView: View {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.posterURL)){ image in
                                             image
                                                 .resizable()
@@ -91,7 +89,6 @@ struct ComingSoonView: View {
                                                 .shadow(radius: 6)
                                             
                                         } placeholder: {
-                                            ProgressView()
                                         }
                                     }.buttonStyle(PlainButtonStyle())
                                     

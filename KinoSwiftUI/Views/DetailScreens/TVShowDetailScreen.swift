@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct TVShowDetailScreen: View {
+    @ObservedObject var viewModel = TvShowDetailViewModel()
+    let screen = UIScreen.main.bounds
+
     let photoURL: String
     let title: String
     let pgRating: Int
-
+    let id: Int
+    
     var body: some View {
+        ZStack{
+            
+                Color.clear.overlay(
+                    AsyncImage(url: URL(string: photoURL)) {image in
+                        image
+                            .resizable()
+                            .frame(width: screen.width, height: screen.height)
+                            .blur(radius: 40)
+                            .brightness(-0.3)
+                    }placeholder: {
+                    }
+                )
+                
+                .task {
+                    await viewModel.loadShowData(id: id)
+                }
+                
+            
             ScrollView{
                 VStack(spacing: 0){
                     
@@ -20,7 +42,7 @@ struct TVShowDetailScreen: View {
                         image
                             .resizable()
                             .cornerRadius(12)
-                           .frame(maxWidth: 700)
+                            .frame(maxWidth: 700)
                             .scaledToFit()
                             .shadow(radius: 6)
                             .padding()
@@ -30,11 +52,18 @@ struct TVShowDetailScreen: View {
                     Spacer()
                     Text(title)
                         .font(.system(size: 23, weight: .medium))
+                        .foregroundColor(.white)
                     Text("PG Rating: \(pgRating)")
+                        .foregroundColor(.white)
                     Spacer()
+                    
+                    Text(viewModel.summary ?? "").foregroundColor(.white)
+                        .padding()
+                        .font(.footnote)
                 }
             }
+        }
     }
-
+    
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Cinema
-struct Cinema: Codable {
+struct Cinema: Codable, Hashable {
     let cinemaID, chainID: Int
     let name, shortName, address: String
     let city: City

@@ -13,6 +13,7 @@ enum ServerAPI {
     case inCinemas
     case comingSoon
     case movieDetail
+    case tvShowDetail
 }
 
 extension ServerAPI {
@@ -32,7 +33,12 @@ extension ServerAPI {
         case .comingSoon:
             return "/cinemas/coming_soon?latitude=52.52&longitude=13.4"
         case .movieDetail:
-            return "/data/movies/658032?latitude=52.52&longitude=13.4"
+            return "/data/movies/"
+        case .tvShowDetail:
+           // return "/data/tv_shows/:tv_show_id" //dodati ovaj tvshowid u funkciji
+            return "/data/tv_shows/"
+
         }
+        
     }
 }

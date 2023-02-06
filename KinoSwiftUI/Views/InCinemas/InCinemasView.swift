@@ -51,8 +51,6 @@ struct CinemasView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height: 220)
                             } placeholder: {
-                                ProgressView()
-                                    .frame(width: 100, height: 220)
                             }
                             ImageBlurView()
                             
@@ -81,7 +79,7 @@ struct CinemasView: View {
                             ForEach(category.movies, id: \.movieID)  { movie in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating), tag: movie, selection: $selectedMovie){
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.posterURL)){ image in
                                             image
                                                 .resizable()
@@ -90,7 +88,6 @@ struct CinemasView: View {
                                                 .shadow(radius: 6)
                                             
                                         } placeholder: {
-                                            ProgressView()
                                         }
                                     }.buttonStyle(PlainButtonStyle())
                                     Text(movie.title)
@@ -98,7 +95,6 @@ struct CinemasView: View {
                                         .font(.system(size: 12))
                                     
                                     HStack{
-                                        //  ForEach(movie.genre, id: \.self) {genre in
                                         Text(movie.genre.first ?? "")
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)

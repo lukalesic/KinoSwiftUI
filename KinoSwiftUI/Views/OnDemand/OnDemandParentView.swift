@@ -54,6 +54,6 @@ struct ActiveView: View {
 }
 
 enum SelectedContent: String, CaseIterable {
-    case shows = "Shows"
     case movies = "Movies"
+    case shows = "Shows"
 }

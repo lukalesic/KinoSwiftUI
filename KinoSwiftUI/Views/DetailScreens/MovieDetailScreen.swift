@@ -13,26 +13,25 @@ struct MovieDetailScreen: View {
     let photoURL: String
     let title: String
     let pgRating: Int
-   // let summary: String? = ""
+    let id: Int
     
     var body: some View {
         
         ZStack{
             Color.clear.overlay(
-            AsyncImage(url: URL(string: photoURL)) {image in
-                image
-                    .resizable()
-                    .frame(width: screen.width, height: screen.height)
-                    .blur(radius: 40)
-                    .brightness(-0.3)
-                    //.edgesIgnoringSafeArea(.all)
-            }placeholder: {
-            }
-            )
-
-                .task {
-                    await viewModel.loadMovieData()
+                AsyncImage(url: URL(string: photoURL)) {image in
+                    image
+                        .resizable()
+                        .frame(width: screen.width, height: screen.height)
+                        .blur(radius: 40)
+                        .brightness(-0.3)
+                }placeholder: {
                 }
+            )
+            
+            .task {
+                await viewModel.loadMovieData(id: id)
+            }
             
             ScrollView{
                 VStack(spacing: 0){
@@ -61,12 +60,72 @@ struct MovieDetailScreen: View {
                     .font(.footnote)
                     .padding()
                     .foregroundColor(.white)
+                VStack(spacing: -3){
+                    if viewModel.cinemas?.isEmpty == false {
+                        HStack{
+                            
+                            Image(systemName: "popcorn.circle")
+                            Text("Playing in movies:")
+                                .font(.system(size: 16, weight: .medium))
+                        }.foregroundColor(.white)
+                    }
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack{
+                            ForEach(viewModel.cinemas?.prefix(10) ?? [], id: \.self) { cinema in
+                                VStack{
+                                    Text(cinema.name)
+                                    Text(cinema.city.rawValue)
+                                        .font(.footnote)
+                                }.padding(.horizontal)
+                                Image(systemName: "circle.fill")
+                                    .font(.system(size: 5))
+                            }.font(.system(size: 15, weight: .medium))
+                                .foregroundColor(.white)
+                        }.padding()
+                    }
+                }
+                
+                VStack(spacing: -10){
+                    HStack{
+                        Image(systemName: "person.circle")
+                        Text("People:")
+                            .font(.system(size: 16, weight: .medium))
+                    }                            .foregroundColor(.white)
+                    
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack(spacing: -18){
+                            ForEach(viewModel.people?.prefix(10) ?? [], id: \.self) { person in
+                                VStack{
+                                    VStack(spacing: -16){
+                                        AsyncImage(url: URL(string: person.photoURL)){ image in
+                                            image
+                                                .resizable()
+                                                .cornerRadius(15)
+                                            
+                                                .scaleEffect(0.7)
+                                                .cornerRadius(11)
+ 
+                                        }placeholder: {
+                                        }
+                                        
+                                        Text(person.name)
+                                    }
+                                    Text(person.role?.rawValue ?? "")
+                                        .font(.footnote)
+                                }
+                            }.font(.system(size: 15, weight: .medium))
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                
                 Spacer()
+                
             }
         }
-
+        
     }
-   
+    
 }
 
 

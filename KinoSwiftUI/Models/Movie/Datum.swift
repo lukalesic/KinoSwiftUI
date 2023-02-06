@@ -15,7 +15,7 @@ struct Datum: Codable {
     let inAppBooking: Bool
     let ticketLink: String
     let bookingLink: String
-    let value: Value
+    let value: Value?
 
     enum CodingKeys: String, CodingKey {
         case showtimeID = "showtime_id"
@@ -24,11 +24,13 @@ struct Datum: Codable {
         case inAppBooking = "in_app_booking"
         case ticketLink = "ticket_link"
         case bookingLink = "booking_link"
-        case value
+        case value = "value"
     }
 }
 
 enum Value: String, Codable {
     case empty = ""
     case omu = "OMU"
+    case threedimensional = "3D"
+    case OV = "OV"
 }

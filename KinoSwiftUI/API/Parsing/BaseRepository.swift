@@ -25,7 +25,10 @@ class BaseRepository {
         let urlSession = URLSession.shared
         
         var urlRequest = URLRequest(url: url!)
-        urlRequest.addValue("Token token=\(uuid)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpMethod = "GET"
+
+        urlRequest.setValue("Token token=\(uuid)", forHTTPHeaderField: "Authorization")
+        print(uuid)
         
         let (data, _) = try await urlSession.data(from: url!)
         return try APIDecoder.decoder.decode(T.self, from: data)

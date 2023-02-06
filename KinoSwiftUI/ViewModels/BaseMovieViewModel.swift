@@ -16,7 +16,8 @@ enum MoviesLoadingState {
 
 @MainActor
 class MovieBaseViewModel: ObservableObject {
-    var baseItem: Welcome?
+    @Published var baseItem: Welcome?
+    
     var type: ServerAPI = {
         return ServerAPI.movies
     }()

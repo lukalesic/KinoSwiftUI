@@ -79,7 +79,9 @@ struct CinemasView: View {
                             ForEach(category.items, id: \.itemID)  { movie in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID), tag: movie as! Movie, selection: $selectedMovie){
+                                    NavigationLink {
+                                        MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
+                                    } label: {
                                         AsyncImage(url: URL(string: movie.posterURL)){ image in
                                             image
                                                 .resizable()

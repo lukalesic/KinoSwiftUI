@@ -13,7 +13,6 @@ struct ShowsView: View {
     @ObservedObject var viewModel: ShowsViewModel
     @State var selectedShow: TvShow?
 
-    
     init(viewModel: ShowsViewModel) {
         self.viewModel = viewModel
     }
@@ -77,13 +76,13 @@ struct ShowsView: View {
                             Spacer()
                         }.padding(.vertical)
                         
-                        
+          
 #if os(iOS)
                         //iPhone and iPod specific
                         if UIDevice.current.userInterfaceIdiom != .pad {
                             ForEach(viewModel.tvShows, id: \.title)  { show in
                                 NavigationLink {
-                                    TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID)
+                                    TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID)
                                 } label: {
                                     ZStack{
                                         AsyncImage(url: URL(string: show.photoURL)){ image in
@@ -116,10 +115,10 @@ struct ShowsView: View {
                         //iPadOS specific
                         else {
                             LazyVGrid(columns: adaptiveColumns) {
-                                ForEach(category.tvShows, id: \.title)  { show in
+                                ForEach(category.items, id: \.title)  { show in
                                     VStack{
                                         NavigationLink {
-                                            TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID)
+                                            TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID)
                                         } label: {
                                             AsyncImage(url: URL(string: show.photoURL)){ image in
                                                 image
@@ -141,11 +140,11 @@ struct ShowsView: View {
 #else
                         //macOS specific
                         LazyVGrid(columns: adaptiveColumns) {
-                            ForEach(category.tvShows, id: \.self)  { show in
+                            ForEach(category.items, id: \.self)  { show in
                                 
                                 VStack{
 
-                                    NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.tvShowID), tag: show, selection: $selectedShow) {
+                                    NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID), tag: show , selection: $selectedShow) {
                        
                                         AsyncImage(url: URL(string: show.photoURL)){ image in
                                             image

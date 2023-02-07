@@ -9,7 +9,7 @@ import SwiftUI
 struct OnDemandView: View {
     @ObservedObject var viewModel = OnDemandViewModel()
     @ObservedObject var showsViewModel = ShowsViewModel()
-    @ObservedObject var moviesViewModel = MovieBaseViewModel(type: ServerAPI.movies)
+    @ObservedObject var moviesViewModel = MovieViewModel(type: ServerAPI.movies)
 
 
     var body: some View {
@@ -40,7 +40,7 @@ struct OnDemandView: View {
 struct ActiveView: View {
     @ObservedObject var viewModel: OnDemandViewModel
     @ObservedObject var showsViewModel: ShowsViewModel
-    @ObservedObject var moviesViewModel: MovieBaseViewModel
+    @ObservedObject var moviesViewModel: MovieViewModel
 
 
     var body: some View {

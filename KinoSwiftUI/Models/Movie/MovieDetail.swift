@@ -16,16 +16,12 @@ struct MovieDetail: Codable {
     let pgRating: Int
     let posterURL, originalPosterURL, photoURL: String
     let summary: String
-    let ratings: RatingDetails
     let media: [JSONAny]?
     let movieDetailsCacheData: String
     let people: [Person]?
     let similarMovies: [JSONAny]?
-    let updatedAt: Int
-    let updatedAtString, servicesCacheDate: String
     let services: Services
     let cinemas: [Cinema]?
-    let showtimes: [Showtime]?
 
     enum CodingKeys: String, CodingKey {
         case path
@@ -37,13 +33,10 @@ struct MovieDetail: Codable {
         case posterURL = "poster_url"
         case originalPosterURL = "original_poster_url"
         case photoURL = "photo_url"
-        case summary, ratings, media
+        case summary, media
         case movieDetailsCacheData = "movie_details_cache_data"
         case people = "people"
         case similarMovies = "similar_movies"
-        case updatedAt = "updated_at"
-        case updatedAtString = "updated_at_string"
-        case servicesCacheDate = "services_cache_date"
-        case services, cinemas, showtimes
+        case services, cinemas
     }
 }

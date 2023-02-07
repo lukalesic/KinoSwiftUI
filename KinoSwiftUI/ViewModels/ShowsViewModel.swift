@@ -7,22 +7,15 @@ import Foundation
 import Combine
 import SwiftUI
 
-enum TvShowLoadingState {
-    case empty
-    case loading
-    case error(error: Error)
-    case populated
-}
-
 @MainActor
 class ShowsViewModel: ObservableObject {
-    @Published private(set) var loadingState: TvShowLoadingState = .empty
+    @Published private(set) var loadingState: LoadingState = .empty
     let repo = BaseRepository()
     
-    @Published var tvShows = [TvShow]()
+    @Published var tvShows = [BaseItem]()
     @Published var spotlight = [Spotlight]()
     @Published var categories = [Category]()
-    @Published var show : Show?
+    @Published var show : BaseResponse?
     private var cancellable: AnyCancellable?
     var selectedOption: TvShow?
     
@@ -37,9 +30,11 @@ class ShowsViewModel: ObservableObject {
             do{
                 self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
                 self.categories = self.show!.categories
-                for show in self.categories.first!.tvShows {
+                
+                for show in self.categories.first!.items {
                     self.tvShows.append(show)
                 }
+                
                 self.spotlight.removeAll()
                 try self.spotlight.insert(self.show!.spotlight, at: 0)
                 
@@ -60,8 +55,8 @@ class ShowsViewModel: ObservableObject {
 
                     try await self.repo.loadMoreContent()
                     self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
-                    for show in self.show!.categories.first!.tvShows {
-                        self.tvShows.append(show)
+                    for show in self.show!.categories.first!.items {
+                        self.tvShows.append(show as! TvShow)
                     }
 
                 }

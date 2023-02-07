@@ -12,9 +12,9 @@ import SwiftUI
 struct MoviesView: View {
     
     @State private var selectedMovie: Movie?
-    @ObservedObject var viewModel: MovieBaseViewModel
+    @ObservedObject var viewModel: MovieViewModel
     
-    init(viewModel: MovieBaseViewModel) {
+    init(viewModel: MovieViewModel) {
         self.viewModel = viewModel
     }
     
@@ -82,9 +82,9 @@ struct MoviesView: View {
                         //iPhone and iPod specific:
                         if UIDevice.current.userInterfaceIdiom != .pad {
                             
-                            ForEach(category.movies, id: \.movieID)  { movie in
+                            ForEach(category.items, id: \.itemID)  { movie in
                                 NavigationLink {
-                                    MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID)
+                                    MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
                                 } label: {
                                     ZStack{
                                         AsyncImage(url: URL(string: movie.photoURL)){ image in
@@ -121,10 +121,10 @@ struct MoviesView: View {
                         //iPadOS Specific:
                         else {
                             LazyVGrid(columns: adaptiveColumns) {
-                                ForEach(category.movies, id: \.movieID)  { movie in
+                                ForEach(category.items, id: \.itemID)  { movie in
                                     VStack{
                                         NavigationLink {
-                                            MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID)
+                                            MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
                                         } label: {
                                             AsyncImage(url: URL(string: movie.photoURL)){ image in
                                                 image
@@ -144,10 +144,10 @@ struct MoviesView: View {
 #else
                         //macOS specific:
                         LazyVGrid(columns: adaptiveColumns) {
-                            ForEach(category.movies, id: \.movieID)  { movie in
+                            ForEach(category.items, id: \.self)  { movie in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.movieID), tag: movie, selection: $selectedMovie){
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID), tag: movie, selection: $selectedMovie){
                                         AsyncImage(url: URL(string: movie.photoURL)){ image in
                                             image
                                                 .resizable()

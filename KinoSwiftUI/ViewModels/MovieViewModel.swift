@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MoviesLoadingState {
+enum LoadingState {
   case empty
   case loading
   case error(error: Error)
@@ -15,26 +15,26 @@ enum MoviesLoadingState {
 }
 
 @MainActor
-class MovieBaseViewModel: ObservableObject {
-    @Published var baseItem: Welcome?
+class MovieViewModel: ObservableObject {
+    @Published var baseItem: BaseResponse?
     
     var type: ServerAPI = {
         return ServerAPI.movies
     }()
     
-    init(baseItem: Welcome? = nil, type: ServerAPI) {
+    init(baseItem: BaseResponse? = nil, type: ServerAPI) {
         self.baseItem = baseItem
         self.type = type
     }
     
     let repo = BaseRepository()
     
-    @Published private(set) var loadingContent: MoviesLoadingState = .empty
+    @Published private(set) var loadingContent: LoadingState = .empty
 
     
-    @Published var movies = [Movie]()
+    @Published var movies = [BaseItem]()
     @Published var spotlight = [Spotlight]()
-    @Published var categories = [MovieCategory]()
+    @Published var categories = [Category]()
     @Published var loadMore: String?
 
     
@@ -44,7 +44,11 @@ class MovieBaseViewModel: ObservableObject {
             do{
                 self.baseItem = try await self.repo.fetchContent(element: baseItem, type: type)
                 self.categories = self.baseItem!.categories
-                self.movies = self.categories.first!.movies
+                
+                for movie in self.categories.first!.items {
+                    self.movies.append(contentsOf: movies)
+                }
+                
                 self.spotlight.removeAll()
                 try self.spotlight.insert(self.baseItem!.spotlight, at: 0)
                 self.loadingContent = .populated

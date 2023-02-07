@@ -14,8 +14,8 @@ enum SelectedMovieContent: String, CaseIterable {
 
 struct InCinemasParentView: View {
     @ObservedObject var viewModel = InCinemasParentViewModel()
-    @ObservedObject var cinemasVM = MovieBaseViewModel(type: ServerAPI.inCinemas)
-    @ObservedObject var comingSoonVM = MovieBaseViewModel(type: ServerAPI.comingSoon)
+    @ObservedObject var cinemasVM = MovieViewModel(type: ServerAPI.inCinemas)
+    @ObservedObject var comingSoonVM = MovieViewModel(type: ServerAPI.comingSoon)
     
     
     var body: some View {
@@ -45,8 +45,8 @@ struct InCinemasParentView: View {
 
 struct ActiveMovieView: View {
     @ObservedObject var viewModel: InCinemasParentViewModel
-    @ObservedObject var cinemasViewModel: MovieBaseViewModel
-    @ObservedObject var comingSoonViewModel: MovieBaseViewModel
+    @ObservedObject var cinemasViewModel: MovieViewModel
+    @ObservedObject var comingSoonViewModel: MovieViewModel
     
     
     var body: some View {

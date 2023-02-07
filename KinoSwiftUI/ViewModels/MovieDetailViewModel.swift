@@ -16,7 +16,6 @@ class MovieDetailViewModel: ObservableObject {
     @Published var movies = [Movie]()
     @Published var loadMore: String?
     @Published var summary: String?
-    @Published var movieID: Int?
     @Published var cinemas: [Cinema]?
     @Published var people: [Person]?
     
@@ -26,7 +25,6 @@ class MovieDetailViewModel: ObservableObject {
         Task{
             do{
                 self.movieDetail = try await self.repo.fetchMovieDetailContent(id: id)
-                self.movieID = self.movieDetail?.movieID
                 self.summary = movieDetail?.summary
                 self.cinemas = self.movieDetail?.cinemas
                 self.people = self.movieDetail?.people

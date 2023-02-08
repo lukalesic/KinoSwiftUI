@@ -10,75 +10,43 @@ import Foundation
 class DetailRepo {
     
     let uuid = UUID()
+    var url = URL(string: "")
     
-    func fetchMovieDetailContent(id: Int) -> MovieDetail {
+    func fetchDetailContent<T: Decodable>(element: T, type: ServerAPI, id: Int) -> T {
+        if type == .tvShows {
+             url = URL(string: "\(ServerAPI.tvShowDetail.baseURL)\(ServerAPI.tvShowDetail.path)/\(id)")!
+            print(url)
+        }
+        else {
+             url = URL(string: "\(ServerAPI.movieDetail.baseURL)\(ServerAPI.movieDetail.path)\(id)?latitude=52.52&longitude=13.4")!
+        }
+        
+        let urlSession = URLSession.shared
+        
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Token token=\(uuid)", forHTTPHeaderField: "Authorization")
 
-       let url = URL(string: "\(ServerAPI.movieDetail.baseURL)\(ServerAPI.movieDetail.path)\(id)?latitude=52.52&longitude=13.4")!
-
-       let urlSession = URLSession.shared
-       
-       var urlRequest = URLRequest(url: url)
-       urlRequest.httpMethod = "GET"
-       urlRequest.setValue("Token token=\(uuid)", forHTTPHeaderField: "Authorization")
-       
-       var movieDetail: MovieDetail?
-       let semaphore = DispatchSemaphore(value: 0)
-       
-       urlSession.dataTask(with: urlRequest) { data, response, error in
-          guard let data = data, error == nil else {
-             print("error")
-             semaphore.signal()
-             return
-          }
-          
-          do {
-             movieDetail = try APIDecoder.decoder.decode(MovieDetail.self, from: data)
-          } catch let decodingError {
-             print("error decoding movie: \(decodingError)")
-          }
-          
-          semaphore.signal()
-       }.resume()
-       
-       semaphore.wait()
-       return movieDetail!
+        let semaphore = DispatchSemaphore(value: 0)
+        var result: T?
+        
+        urlSession.dataTask(with: urlRequest) { data, response, error in
+           guard let data = data, error == nil else {
+              print("error")
+              semaphore.signal()
+              return
+           }
+           
+           do {
+              result = try APIDecoder.decoder.decode(T.self, from: data)
+           } catch let decodingError {
+              print("error decoding: \(decodingError)")
+           }
+           
+           semaphore.signal()
+        }.resume()
+        
+        semaphore.wait()
+        return result!
     }
-    
-    
-    func fetchShowDetailContent(id: Int) -> TvShowDetail {
-
-     // id: 34643
-     
-       let url = URL(string: "\(ServerAPI.tvShowDetail.baseURL)\(ServerAPI.tvShowDetail.path)/\(id)")!
-        print(url)
-
-       let urlSession = URLSession.shared
-       
-       var urlRequest = URLRequest(url: url)
-       urlRequest.httpMethod = "GET"
-       urlRequest.setValue("Token token=\(uuid)", forHTTPHeaderField: "Authorization")
-       
-       var tvShowDetail: TvShowDetail?
-       let semaphore = DispatchSemaphore(value: 0)
-       
-       urlSession.dataTask(with: urlRequest) { data, response, error in
-          guard let data = data, error == nil else {
-             print("error")
-             semaphore.signal()
-             return
-          }
-          
-          do {
-             tvShowDetail = try APIDecoder.decoder.decode(TvShowDetail.self, from: data)
-          } catch let decodingError {
-             print("error decoding movie: \(decodingError)")
-          }
-          
-          semaphore.signal()
-       }.resume()
-       
-       semaphore.wait()
-       return tvShowDetail!
-    }
-     
 }

@@ -24,7 +24,7 @@ class MovieDetailViewModel: ObservableObject {
     func loadMovieData(id: Int) async {
         Task{
             do{
-                self.movieDetail = try await self.repo.fetchMovieDetailContent(id: id)
+                self.movieDetail = try await self.repo.fetchDetailContent(element: movieDetail, type: .movies, id: id)
                 self.summary = movieDetail?.summary
                 self.cinemas = self.movieDetail?.cinemas
                 self.people = self.movieDetail?.people

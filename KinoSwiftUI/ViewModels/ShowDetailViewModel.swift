@@ -18,7 +18,7 @@ class TvShowDetailViewModel: ObservableObject {
     func loadShowData(id: Int) async {
         Task{
             do{
-                self.tvShowDetail = try await self.repo.fetchShowDetailContent(id: id)
+                self.tvShowDetail = try await self.repo.fetchDetailContent(element: tvShowDetail, type: .tvShows, id: id)
                 self.summary = tvShowDetail?.summary
             }
             catch{

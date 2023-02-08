@@ -80,12 +80,12 @@ struct ShowsView: View {
 #if os(iOS)
                         //iPhone and iPod specific
                         if UIDevice.current.userInterfaceIdiom != .pad {
-                            ForEach(viewModel.tvShows, id: \.title)  { show in
+                            ForEach(viewModel.tvShows, id: \.title)  { showBaseItem in
                                 NavigationLink {
-                                    TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID)
+                                    TVShowDetailScreen(photoURL: showBaseItem.photoURL, title: showBaseItem.title, pgRating: showBaseItem.pgRating, id: showBaseItem.itemID)
                                 } label: {
                                     ZStack{
-                                        AsyncImage(url: URL(string: show.photoURL)){ image in
+                                        AsyncImage(url: URL(string: showBaseItem.photoURL)){ image in
                                             image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
@@ -100,7 +100,7 @@ struct ShowsView: View {
                                         
                                         VStack{
                                             Spacer()
-                                            Text(show.title)
+                                            Text(showBaseItem.title)
                                                 .foregroundColor(.white)
                                                 .fontWeight(.medium)
                                                 .padding()
@@ -115,12 +115,12 @@ struct ShowsView: View {
                         //iPadOS specific
                         else {
                             LazyVGrid(columns: adaptiveColumns) {
-                                ForEach(category.items, id: \.title)  { show in
+                                ForEach(category.items, id: \.title)  { showBaseItem in
                                     VStack{
                                         NavigationLink {
-                                            TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID)
+                                            TVShowDetailScreen(photoURL: showBaseItem.photoURL, title: showBaseItem.title, pgRating: showBaseItem.pgRating, id: showBaseItem.itemID)
                                         } label: {
-                                            AsyncImage(url: URL(string: show.photoURL)){ image in
+                                            AsyncImage(url: URL(string: showBaseItem.photoURL)){ image in
                                                 image
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
@@ -130,7 +130,7 @@ struct ShowsView: View {
                                             } placeholder: {
                                             }
                                         }.buttonStyle(PlainButtonStyle())
-                                        Text(show.title).lineLimit(1)
+                                        Text(showBaseItem.title).lineLimit(1)
 
                                     }
                                 }
@@ -140,13 +140,13 @@ struct ShowsView: View {
 #else
                         //macOS specific
                         LazyVGrid(columns: adaptiveColumns) {
-                            ForEach(category.items, id: \.self)  { show in
+                            ForEach(category.items, id: \.self)  { showBaseItem in
                                 
                                 VStack{
 
-                                    NavigationLink(destination: TVShowDetailScreen(photoURL: show.photoURL, title: show.title, pgRating: show.pgRating, id: show.itemID), tag: show , selection: $selectedShow) {
+                                    NavigationLink(destination: TVShowDetailScreen(photoURL: showBaseItem.photoURL, title: showBaseItem.title, pgRating: showBaseItem.pgRating, id: showBaseItem.itemID), tag: showBaseItem , selection: $selectedShow) {
                        
-                                        AsyncImage(url: URL(string: show.photoURL)){ image in
+                                        AsyncImage(url: URL(string: showBaseItem.photoURL)){ image in
                                             image
                                                 .resizable()
                                                 .cornerRadius(9)
@@ -160,10 +160,10 @@ struct ShowsView: View {
                                     .buttonStyle(PlainButtonStyle())
                                    
                                  
-                                    Text(show.title).lineLimit(1)
+                                    Text(showBaseItem.title).lineLimit(1)
                                 }
                                 .onTapGesture {
-                                         self.selectedShow = show
+                                         self.selectedShow = showBaseItem
                                     print(selectedShow!.title)
                                   }
 

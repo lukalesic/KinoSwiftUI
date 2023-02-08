@@ -16,14 +16,14 @@ enum LoadingState {
 
 @MainActor
 class MovieViewModel: ObservableObject {
-    @Published var baseItem: BaseResponse?
+    @Published var movieBaseItem: BaseResponse?
     
     var type: ServerAPI = {
         return ServerAPI.movies
     }()
     
     init(baseItem: BaseResponse? = nil, type: ServerAPI) {
-        self.baseItem = baseItem
+        self.movieBaseItem = baseItem
         self.type = type
     }
     
@@ -42,15 +42,15 @@ class MovieViewModel: ObservableObject {
         Task{
             self.loadingContent = .loading
             do{
-                self.baseItem = try await self.repo.fetchContent(element: baseItem, type: type)
-                self.categories = self.baseItem!.categories
+                self.movieBaseItem = try await self.repo.fetchContent(element: movieBaseItem, type: .movies)
+                self.categories = self.movieBaseItem!.categories
                 
                 for movie in self.categories.first!.items {
-                    self.movies.append(contentsOf: movies)
+                    self.movies.append(movie)
                 }
                 
                 self.spotlight.removeAll()
-                try self.spotlight.insert(self.baseItem!.spotlight, at: 0)
+                try self.spotlight.insert(self.movieBaseItem!.spotlight, at: 0)
                 self.loadingContent = .populated
 }
             catch{
@@ -60,6 +60,17 @@ class MovieViewModel: ObservableObject {
         }
     }
     
-    func loadMoreContent() {}
+    func loadMoreContent() async {
+        Task {
+            do{
+                try await self.repo.loadMoreContent()
+                self.movieBaseItem = try await self.repo.fetchContent(element: movieBaseItem, type: type)
+                for movie in self.movieBaseItem!.categories.first!.items {
+                    self.movies.append(movie as! Movie)
+                }
+                print(self.movies.count)
+            }
+        }
+    }
     
 }

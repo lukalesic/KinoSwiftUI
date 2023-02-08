@@ -16,9 +16,11 @@ class BaseRepository {
     
     func fetchContent<T: Decodable>(element: T, type: ServerAPI) async throws -> T {
         
-        if type == .tvShows {
+        if type == .tvShows || type == .movies {
             url = URL(string: "\(type.baseURL)\(type.path)?offset=\(offset)&limit=\(limit)")!
-        } else {
+            print(url)
+        }
+        else {
             url = URL(string: "\(type.baseURL)\(type.path)")!
         }
         

@@ -35,7 +35,6 @@ extension ServerAPI {
         case .movieDetail:
             return "/data/movies/"
         case .tvShowDetail:
-           // return "/data/tv_shows/:tv_show_id" //dodati ovaj tvshowid u funkciji
             return "/data/tv_shows/"
 
         }

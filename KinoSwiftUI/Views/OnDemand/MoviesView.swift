@@ -82,7 +82,7 @@ struct MoviesView: View {
                         //iPhone and iPod specific:
                         if UIDevice.current.userInterfaceIdiom != .pad {
                             
-                            ForEach(category.items, id: \.itemID)  { movie in
+                            ForEach(viewModel.movies, id: \.title)  { movie in
                                 NavigationLink {
                                     MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
                                 } label: {
@@ -112,7 +112,9 @@ struct MoviesView: View {
                                 }
                             }
                             Button {
-                                
+                                Task {
+                                    await viewModel.loadMoreContent()
+                                }
                             } label: {
                                 Text("Load more")
                             }.buttonStyle(.borderedProminent)

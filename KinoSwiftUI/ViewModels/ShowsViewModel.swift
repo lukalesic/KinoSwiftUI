@@ -15,28 +15,25 @@ class ShowsViewModel: ObservableObject {
     @Published var tvShows = [BaseItem]()
     @Published var spotlight = [Spotlight]()
     @Published var categories = [Category]()
-    @Published var show : BaseResponse?
+    @Published var showBaseItem : BaseResponse?
     private var cancellable: AnyCancellable?
     var selectedOption: TvShow?
     
     @Published var hasShownProgressView = false
 
-    
-    
     func loadData() async {
-        
         Task{
             self.loadingState = .loading
             do{
-                self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
-                self.categories = self.show!.categories
+                self.showBaseItem = try await self.repo.fetchContent(element: showBaseItem, type: .tvShows)
+                self.categories = self.showBaseItem!.categories
                 
                 for show in self.categories.first!.items {
                     self.tvShows.append(show)
                 }
                 
                 self.spotlight.removeAll()
-                try self.spotlight.insert(self.show!.spotlight, at: 0)
+                try self.spotlight.insert(self.showBaseItem!.spotlight, at: 0)
                 
                 self.loadingState = .populated
             }
@@ -54,8 +51,8 @@ class ShowsViewModel: ObservableObject {
                     self.hasShownProgressView = true
 
                     try await self.repo.loadMoreContent()
-                    self.show = try await self.repo.fetchContent(element: show, type: .tvShows)
-                    for show in self.show!.categories.first!.items {
+                    self.showBaseItem = try await self.repo.fetchContent(element: showBaseItem, type: .tvShows)
+                    for show in self.showBaseItem!.categories.first!.items {
                         self.tvShows.append(show as! TvShow)
                     }
 

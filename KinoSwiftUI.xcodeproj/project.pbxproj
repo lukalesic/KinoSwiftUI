@@ -23,9 +23,16 @@
 		DF58DF12298934100089E0AA /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58DF11298934100089E0AA /* Datum.swift */; };
 		DF9B471C29912CDE00149AEE /* TvShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B471B29912CDE00149AEE /* TvShowDetail.swift */; };
 		DF9B471E29912E1900149AEE /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B471D29912E1900149AEE /* ShowDetailViewModel.swift */; };
-		DF9B47202991418100149AEE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B471F2991418100149AEE /* BaseModel.swift */; };
+		DF9B47202991418100149AEE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B471F2991418100149AEE /* BaseResponse.swift */; };
 		DF9B472329914CAD00149AEE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B472229914CAD00149AEE /* Category.swift */; };
 		DF9B47282992529A00149AEE /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B47272992529A00149AEE /* Stats.swift */; };
+		DFAD0E932994FF2A001B1C1B /* PaginatedScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */; };
+		DFAD0E962996573E001B1C1B /* BaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E952996573E001B1C1B /* BaseItem.swift */; };
+		DFAD0E9829965759001B1C1B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9729965759001B1C1B /* Movie.swift */; };
+		DFAD0E9A29965761001B1C1B /* TvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9929965761001B1C1B /* TvShow.swift */; };
+		DFAD0E9C299657A8001B1C1B /* DetailBaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9B299657A8001B1C1B /* DetailBaseItem.swift */; };
+		DFAD0E9E2996586D001B1C1B /* TvShowDetailNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9D2996586D001B1C1B /* TvShowDetailNew.swift */; };
+		DFAD0EA029965872001B1C1B /* MovieDetailNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9F29965872001B1C1B /* MovieDetailNew.swift */; };
 		DFAF48DE297AC5B900C457DC /* KinoSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAF48DD297AC5B900C457DC /* KinoSwiftUIApp.swift */; };
 		DFAF48E2297AC5BD00C457DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFAF48E1297AC5BD00C457DC /* Assets.xcassets */; };
 		DFAF48E6297AC5BD00C457DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFAF48E5297AC5BD00C457DC /* Preview Assets.xcassets */; };
@@ -66,9 +73,15 @@
 		DF58DF11298934100089E0AA /* Datum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		DF9B471B29912CDE00149AEE /* TvShowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetail.swift; sourceTree = "<group>"; };
 		DF9B471D29912E1900149AEE /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
-		DF9B471F2991418100149AEE /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		DF9B471F2991418100149AEE /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		DF9B472229914CAD00149AEE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DF9B47272992529A00149AEE /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		DFAD0E952996573E001B1C1B /* BaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseItem.swift; sourceTree = "<group>"; };
+		DFAD0E9729965759001B1C1B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		DFAD0E9929965761001B1C1B /* TvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShow.swift; sourceTree = "<group>"; };
+		DFAD0E9B299657A8001B1C1B /* DetailBaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBaseItem.swift; sourceTree = "<group>"; };
+		DFAD0E9D2996586D001B1C1B /* TvShowDetailNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetailNew.swift; sourceTree = "<group>"; };
+		DFAD0E9F29965872001B1C1B /* MovieDetailNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailNew.swift; sourceTree = "<group>"; };
 		DFAF48DA297AC5B900C457DC /* KinoSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KinoSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFAF48DD297AC5B900C457DC /* KinoSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoSwiftUIApp.swift; sourceTree = "<group>"; };
 		DFAF48E1297AC5BD00C457DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFAD0E932994FF2A001B1C1B /* PaginatedScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,12 +130,27 @@
 				DF58DF092989338E0089E0AA /* Person.swift */,
 				DFAF48FA297AC63900C457DC /* JSONEncodingHelper.swift */,
 				DFAF4906297AC67E00C457DC /* Spotlight.swift */,
-				DF9B471F2991418100149AEE /* BaseModel.swift */,
+				DF9B471F2991418100149AEE /* BaseResponse.swift */,
+				DFAD0E9729965759001B1C1B /* Movie.swift */,
+				DFAD0E952996573E001B1C1B /* BaseItem.swift */,
+				DFAD0E9929965761001B1C1B /* TvShow.swift */,
 				DF9B472229914CAD00149AEE /* Category.swift */,
 				DF9B47272992529A00149AEE /* Stats.swift */,
 				DFAF4902297AC67100C457DC /* Ratings.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DFAD0E942996572C001B1C1B /* DetailModel */ = {
+			isa = PBXGroup;
+			children = (
+				DFAF48F0297AC5F100C457DC /* Movie */,
+				DFAF48F1297AC5F700C457DC /* TVShow */,
+				DFAD0E9B299657A8001B1C1B /* DetailBaseItem.swift */,
+				DFAD0E9F29965872001B1C1B /* MovieDetailNew.swift */,
+				DFAD0E9D2996586D001B1C1B /* TvShowDetailNew.swift */,
+			);
+			path = DetailModel;
 			sourceTree = "<group>";
 		};
 		DFAF48D1297AC5B900C457DC = {
@@ -166,9 +195,8 @@
 		DFAF48EC297AC5D000C457DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DFAD0E942996572C001B1C1B /* DetailModel */,
 				DF9B472629914EF500149AEE /* Common */,
-				DFAF48F0297AC5F100C457DC /* Movie */,
-				DFAF48F1297AC5F700C457DC /* TVShow */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +317,9 @@
 			dependencies = (
 			);
 			name = KinoSwiftUI;
+			packageProductDependencies = (
+				DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */,
+			);
 			productName = KinoSwiftUI;
 			productReference = DFAF48DA297AC5B900C457DC /* KinoSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -317,6 +348,9 @@
 				Base,
 			);
 			mainGroup = DFAF48D1297AC5B900C457DC;
+			packageReferences = (
+				DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */,
+			);
 			productRefGroup = DFAF48DB297AC5B900C457DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -353,12 +387,15 @@
 				DFAF48FB297AC63900C457DC /* JSONEncodingHelper.swift in Sources */,
 				DFAF4921297AC78D00C457DC /* ServerAPI+Parsing.swift in Sources */,
 				DFAF4938297AC9CE00C457DC /* InCinemasParentView.swift in Sources */,
+				DFAD0E962996573E001B1C1B /* BaseItem.swift in Sources */,
 				DFAF493C297AC9EF00C457DC /* ShowsView.swift in Sources */,
 				DF58DF102989340A0089E0AA /* GroupDatum.swift in Sources */,
 				DF9B471C29912CDE00149AEE /* TvShowDetail.swift in Sources */,
+				DFAD0E9829965759001B1C1B /* Movie.swift in Sources */,
 				DF3AF3A5298C96B300FA9452 /* ComingSoonView.swift in Sources */,
 				DF58DF0A2989338E0089E0AA /* Person.swift in Sources */,
 				DFAF4917297AC73D00C457DC /* ServerAPI.swift in Sources */,
+				DFAD0E9C299657A8001B1C1B /* DetailBaseItem.swift in Sources */,
 				DF3AF39D29895A1C00FA9452 /* BaseRepository.swift in Sources */,
 				DF9B47282992529A00149AEE /* Stats.swift in Sources */,
 				DFAF492F297AC93600C457DC /* ImageBlurView.swift in Sources */,
@@ -369,8 +406,11 @@
 				DFAF4903297AC67100C457DC /* Ratings.swift in Sources */,
 				DF9B471E29912E1900149AEE /* ShowDetailViewModel.swift in Sources */,
 				DF3AF39F29895A7500FA9452 /* MovieViewModel.swift in Sources */,
+				DFAD0E9E2996586D001B1C1B /* TvShowDetailNew.swift in Sources */,
 				DFAF492D297AC92A00C457DC /* SidebarView.swift in Sources */,
 				DFAF493E297AC9FF00C457DC /* OnDemandParentView.swift in Sources */,
+				DFAD0E9A29965761001B1C1B /* TvShow.swift in Sources */,
+				DFAD0EA029965872001B1C1B /* MovieDetailNew.swift in Sources */,
 				DFAF4909297AC6D200C457DC /* ShowsViewModel.swift in Sources */,
 				DFAF4907297AC67E00C457DC /* Spotlight.swift in Sources */,
 				DF3AF3A1298C939800FA9452 /* MoviesView.swift in Sources */,
@@ -378,7 +418,7 @@
 				DFAF4927297AC8E700C457DC /* MovieDetailScreen.swift in Sources */,
 				DFAF4925297AC7AD00C457DC /* Helpers.swift in Sources */,
 				DFAF492B297AC91200C457DC /* ContentView.swift in Sources */,
-				DF9B47202991418100149AEE /* BaseModel.swift in Sources */,
+				DF9B47202991418100149AEE /* BaseResponse.swift in Sources */,
 				DF9B472329914CAD00149AEE /* Category.swift in Sources */,
 				DFAF4923297AC79600C457DC /* Error+Extension.swift in Sources */,
 			);
@@ -596,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonahaung/PaginatedScrollView?ref=iosexample.com";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */;
+			productName = PaginatedScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DFAF48D2297AC5B900C457DC /* Project object */;
 }

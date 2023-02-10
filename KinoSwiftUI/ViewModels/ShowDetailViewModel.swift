@@ -11,7 +11,7 @@ import Foundation
 class TvShowDetailViewModel: ObservableObject {
     let repo = DetailRepo()
     
-    @Published var tvShowDetail: TvShowDetail?
+    @Published var tvShowDetail: DetailBaseItem?
     @Published var summary: String?
     var id: Int?
     

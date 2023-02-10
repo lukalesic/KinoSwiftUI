@@ -12,7 +12,7 @@ struct ShowsView: View {
     
     @ObservedObject var viewModel: ShowsViewModel
     @State var selectedShow: TvShow?
-
+    
     init(viewModel: ShowsViewModel) {
         self.viewModel = viewModel
     }
@@ -44,7 +44,7 @@ struct ShowsView: View {
         case .populated:
             
             ScrollView{
-                VStack(spacing: 0.6){
+                LazyVStack(spacing: 0.6){
                     ForEach($viewModel.spotlight, id: \.spotlightID) { $spotlight in
                         ZStack(alignment: .bottom){
                             AsyncImage(url: URL(string: spotlight.photoURL))  {image in
@@ -76,10 +76,11 @@ struct ShowsView: View {
                             Spacer()
                         }.padding(.vertical)
                         
-          
+                        
 #if os(iOS)
                         //iPhone and iPod specific
                         if UIDevice.current.userInterfaceIdiom != .pad {
+                            
                             ForEach(viewModel.tvShows, id: \.title)  { showBaseItem in
                                 NavigationLink {
                                     TVShowDetailScreen(photoURL: showBaseItem.photoURL, title: showBaseItem.title, pgRating: showBaseItem.pgRating, id: showBaseItem.itemID)
@@ -109,8 +110,6 @@ struct ShowsView: View {
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                             }
-                            
-                            
                         }
                         //iPadOS specific
                         else {
@@ -126,12 +125,11 @@ struct ShowsView: View {
                                                     .aspectRatio(contentMode: .fit)
                                                     .cornerRadius(9)
                                                     .shadow(radius: 9)
-                                                 
+                                                
                                             } placeholder: {
                                             }
                                         }.buttonStyle(PlainButtonStyle())
                                         Text(showBaseItem.title).lineLimit(1)
-
                                     }
                                 }
                             }.padding()
@@ -143,9 +141,9 @@ struct ShowsView: View {
                             ForEach(category.items, id: \.self)  { showBaseItem in
                                 
                                 VStack{
-
+                                    
                                     NavigationLink(destination: TVShowDetailScreen(photoURL: showBaseItem.photoURL, title: showBaseItem.title, pgRating: showBaseItem.pgRating, id: showBaseItem.itemID), tag: showBaseItem , selection: $selectedShow) {
-                       
+                                        
                                         AsyncImage(url: URL(string: showBaseItem.photoURL)){ image in
                                             image
                                                 .resizable()
@@ -153,20 +151,20 @@ struct ShowsView: View {
                                                 .shadow(radius: 9)
                                                 .aspectRatio(contentMode: .fit)
                                         } placeholder: {
-
+                                            
                                         }
-                                       
+                                        
                                     }
                                     .buttonStyle(PlainButtonStyle())
-                                   
-                                 
+                                    
+                                    
                                     Text(showBaseItem.title).lineLimit(1)
                                 }
                                 .onTapGesture {
-                                         self.selectedShow = showBaseItem
+                                    self.selectedShow = showBaseItem
                                     print(selectedShow!.title)
-                                  }
-
+                                }
+                                
                             }
                         }.padding()
 #endif
@@ -174,16 +172,20 @@ struct ShowsView: View {
                     HStack{
                         Button {
                             Task{
-                                await viewModel.loadNext()
+                                 await viewModel.loadNext()
                             }
                         } label: {
                             Text("Load more")
                         }.buttonStyle(BorderedProminentButtonStyle())
-                    }.padding()
-                    
+                            .onAppear {
+                                    Task{
+                                     //   await viewModel.loadNext()
+                                    }
+                            }.padding()
+                        
+                    }
                 }
             }
-            
         }
     }
 }

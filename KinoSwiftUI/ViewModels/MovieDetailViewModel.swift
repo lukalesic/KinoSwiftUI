@@ -11,7 +11,8 @@ import Foundation
 class MovieDetailViewModel: ObservableObject {
     let repo = DetailRepo()
     
-    @Published var movieDetail: MovieDetail?
+   // @Published var movieDetail: MovieDetail?
+    @Published var movieDetail: DetailBaseItem?
     
     @Published var movies = [Movie]()
     @Published var loadMore: String?
@@ -28,7 +29,6 @@ class MovieDetailViewModel: ObservableObject {
                 self.summary = movieDetail?.summary
                 self.cinemas = self.movieDetail?.cinemas
                 self.people = self.movieDetail?.people
-                
             }
             catch{
                 print(error)

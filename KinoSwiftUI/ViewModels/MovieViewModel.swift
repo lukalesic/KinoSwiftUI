@@ -30,14 +30,11 @@ class MovieViewModel: ObservableObject {
     let repo = BaseRepository()
     
     @Published private(set) var loadingContent: LoadingState = .empty
-
-    
     @Published var movies = [BaseItem]()
     @Published var spotlight = [Spotlight]()
     @Published var categories = [Category]()
     @Published var loadMore: String?
-
-    
+ 
     func loadContent() async {
         Task{
             self.loadingContent = .loading

@@ -12,14 +12,13 @@ class ShowsViewModel: ObservableObject {
     @Published private(set) var loadingState: LoadingState = .empty
     let repo = BaseRepository()
     
+    @Published var showBaseItem : TvShowDetail?
     @Published var tvShows = [BaseItem]()
     @Published var spotlight = [Spotlight]()
     @Published var categories = [Category]()
-    @Published var showBaseItem : BaseResponse?
     private var cancellable: AnyCancellable?
     var selectedOption: TvShow?
-    
-    @Published var hasShownProgressView = false
+    @Published var isLoading = false
 
     func loadData() async {
         Task{
@@ -44,18 +43,17 @@ class ShowsViewModel: ObservableObject {
             }
         }
         
-        
         func loadNext() async {
+            guard !isLoading else { return }
             Task {
                 do{
-                    self.hasShownProgressView = true
-
+                    isLoading = true
                     try await self.repo.loadMoreContent()
                     self.showBaseItem = try await self.repo.fetchContent(element: showBaseItem, type: .tvShows)
                     for show in self.showBaseItem!.categories.first!.items {
                         self.tvShows.append(show as! TvShow)
                     }
-
+                    isLoading = false
                 }
             }
         }

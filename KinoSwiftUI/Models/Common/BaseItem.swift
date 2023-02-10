@@ -1,29 +1,11 @@
 //
-//  BaseModel.swift
+//  BaseItem.swift
 //  KinoSwiftUI
 //
-//  Created by Luka Lešić on 06.02.2023..
+//  Created by Luka Lešić on 10.02.2023..
 //
 
 import Foundation
-
-class BaseResponse: Decodable {
-    let spotlight: Spotlight
-    let categories: [Category]
-    let loadMore: String
-
-    enum CodingKeys: String, CodingKey {
-        case spotlight, categories
-        case loadMore = "load_more"
-    }
-    
-    required init(spotlight: Spotlight, categories: [Category], loadMore: String) {
-        self.spotlight = spotlight
-        self.categories = categories
-        self.loadMore = loadMore
-    }
-    
-}
 
 class BaseItem: Decodable, Hashable {
     static func == (lhs: BaseItem, rhs: BaseItem) -> Bool {
@@ -83,28 +65,4 @@ class BaseItem: Decodable, Hashable {
             self.itemID = try container.decode(Int.self, forKey: .tvShowID)
         }
     }
-}
-
-
-class Movie: BaseItem {
-
-    let contentURL: String
-    let originalPosterURL: String
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.contentURL = try container.decode(String.self, forKey: .contentURL)
-        self.originalPosterURL = try container.decode(String.self, forKey: .originalPosterURL)
-        try super.init(from: decoder)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case contentURL = "content_url"
-        case movieID = "movie_id"
-        case originalPosterURL = "original_poster_url"
-    }
-}
-
-class TvShow: BaseItem {
- 
 }

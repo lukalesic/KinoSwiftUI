@@ -111,13 +111,22 @@ struct MoviesView: View {
                                     }.buttonStyle(PlainButtonStyle())
                                 }
                             }
-                            Button {
-                                Task {
-                                    await viewModel.loadMoreContent()
+                            HStack{
+                                Button {
+                                    Task {
+                                        await viewModel.loadMoreContent()
+                                    }
+                                } label: {
+                                    Text("Load more")
                                 }
-                            } label: {
-                                Text("Load more")
-                            }.buttonStyle(.borderedProminent)
+                                .onAppear {
+                                        Task{
+                                        await viewModel.loadMoreContent()
+                                        }
+                                }
+                                .buttonStyle(.borderedProminent)
+                                
+                            }
                         }
                         
                         //iPadOS Specific:

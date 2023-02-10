@@ -179,7 +179,7 @@ struct ShowsView: View {
                         }.buttonStyle(BorderedProminentButtonStyle())
                             .onAppear {
                                     Task{
-                                     //   await viewModel.loadNext()
+                                    await viewModel.loadNext()
                                     }
                             }.padding()
                         

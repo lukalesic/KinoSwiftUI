@@ -22,7 +22,6 @@
 		DF9B47202991418100149AEE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B471F2991418100149AEE /* BaseResponse.swift */; };
 		DF9B472329914CAD00149AEE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B472229914CAD00149AEE /* Category.swift */; };
 		DF9B47282992529A00149AEE /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B47272992529A00149AEE /* Stats.swift */; };
-		DFAD0E932994FF2A001B1C1B /* PaginatedScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */; };
 		DFAD0E962996573E001B1C1B /* BaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E952996573E001B1C1B /* BaseItem.swift */; };
 		DFAD0E9829965759001B1C1B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9729965759001B1C1B /* Movie.swift */; };
 		DFAD0E9A29965761001B1C1B /* TvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD0E9929965761001B1C1B /* TvShow.swift */; };
@@ -106,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFAD0E932994FF2A001B1C1B /* PaginatedScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +291,6 @@
 			);
 			name = KinoSwiftUI;
 			packageProductDependencies = (
-				DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */,
 			);
 			productName = KinoSwiftUI;
 			productReference = DFAF48DA297AC5B900C457DC /* KinoSwiftUI.app */;
@@ -324,7 +321,6 @@
 			);
 			mainGroup = DFAF48D1297AC5B900C457DC;
 			packageReferences = (
-				DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */,
 			);
 			productRefGroup = DFAF48DB297AC5B900C457DC /* Products */;
 			projectDirPath = "";
@@ -608,25 +604,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jonahaung/PaginatedScrollView?ref=iosexample.com";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DFAD0E922994FF2A001B1C1B /* PaginatedScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DFAD0E912994FF2A001B1C1B /* XCRemoteSwiftPackageReference "PaginatedScrollView" */;
-			productName = PaginatedScrollView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DFAF48D2297AC5B900C457DC /* Project object */;
 }

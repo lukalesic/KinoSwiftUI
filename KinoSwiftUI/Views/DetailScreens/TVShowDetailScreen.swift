@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TVShowDetailScreen: View {
-    @ObservedObject var viewModel = TvShowDetailViewModel()
+    @ObservedObject var viewModel = DetailViewModel()
     let screen = UIScreen.main.bounds
 
     let photoURL: String
@@ -31,7 +31,7 @@ struct TVShowDetailScreen: View {
                 )
                 
                 .task {
-                    await viewModel.loadShowData(id: id)
+                    await viewModel.loadData(id: id, type: .tvShowDetails)
                 }
                 
             

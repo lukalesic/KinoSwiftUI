@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-
-
 class DetailBaseItem: Decodable, Hashable {
     static func == (lhs: DetailBaseItem, rhs: DetailBaseItem) -> Bool {
         return lhs.itemID == lhs.itemID
@@ -26,15 +23,9 @@ class DetailBaseItem: Decodable, Hashable {
     let pgRating: Int
     let posterURL, originalPosterURL, photoURL: String
     let summary: String
-    //movie:
-   // let media: [JSONAny]?
-    
     let itemDetailsCacheData: String
     
     let people: [Person]?
-   // let similarMovies: [JSONAny]?
-  //  let services: Services?
- //  let cinemas: [Cinema]?
 
     enum CodingKeys: String, CodingKey {
         case path
@@ -48,8 +39,6 @@ class DetailBaseItem: Decodable, Hashable {
         case movieDetailsCacheData = "movie_details_cache_data"
         case tvShowDetailsCacheData = "tv_show_details_cache_data"
         case people = "people"
-      //  case similarMovies = "similar_movies"
-      //  case services, cinemas
         case movieID = "movie_id"
         case tvShowID = "tv_show_id"
         
@@ -66,11 +55,7 @@ class DetailBaseItem: Decodable, Hashable {
         self.originalPosterURL = try container.decode(String.self, forKey: .originalPosterURL)
         self.photoURL = try container.decode(String.self, forKey: .photoURL)
         self.summary = try container.decode(String.self, forKey: .summary)
-      //  self.media = try container.decodeIfPresent([JSONAny].self, forKey: .media)
         self.people = try container.decodeIfPresent([Person].self, forKey: .people)
-       // self.similarMovies = try container.decodeIfPresent([JSONAny].self, forKey: .similarMovies)
-      //  self.services = try container.decode(Services.self, forKey: .services)
-     //   self.cinemas = try container.decodeIfPresent([Cinema].self, forKey: .cinemas)
         
         do{
             self.itemID = try container.decode(Int.self, forKey: .movieID)

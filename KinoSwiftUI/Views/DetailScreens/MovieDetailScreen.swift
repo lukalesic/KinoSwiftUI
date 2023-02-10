@@ -7,8 +7,8 @@
 import SwiftUI
 
 struct MovieDetailScreen: View {
-    @ObservedObject var viewModel = MovieDetailViewModel()
-    
+    @ObservedObject var viewModel = DetailViewModel()
+
     let screen = UIScreen.main.bounds
     let photoURL: String
     let title: String
@@ -30,7 +30,7 @@ struct MovieDetailScreen: View {
             )
             
             .task {
-                await viewModel.loadMovieData(id: id)
+                await viewModel.loadData(id: id, type: .movieDetails)
             }
             
             ScrollView{

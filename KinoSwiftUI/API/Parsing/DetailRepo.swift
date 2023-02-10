@@ -19,6 +19,7 @@ class DetailRepo {
         }
         else {
              url = URL(string: "\(ServerAPI.movieDetail.baseURL)\(ServerAPI.movieDetail.path)\(id)?latitude=52.52&longitude=13.4")!
+            print(url)
         }
         
         let urlSession = URLSession.shared

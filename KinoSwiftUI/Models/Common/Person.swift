@@ -30,4 +30,5 @@ enum Role: String, Codable {
     case director = "director"
     case producer = "producer"
     case writer = "writer"
+    case creator = "creator"
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TvShowDetailNew: DetailBaseItem {
+class TvShowDetail: DetailBaseItem {
 
   
 }

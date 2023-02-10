@@ -12,7 +12,7 @@ class ShowsViewModel: ObservableObject {
     @Published private(set) var loadingState: LoadingState = .empty
     let repo = BaseRepository()
     
-    @Published var showBaseItem : TvShowDetail?
+    @Published var showBaseItem : BaseResponse?
     @Published var tvShows = [BaseItem]()
     @Published var spotlight = [Spotlight]()
     @Published var categories = [Category]()

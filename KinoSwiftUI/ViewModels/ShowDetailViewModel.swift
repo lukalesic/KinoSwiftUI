@@ -10,16 +10,16 @@ import Foundation
 @MainActor
 class TvShowDetailViewModel: ObservableObject {
     let repo = DetailRepo()
-    
-    @Published var tvShowDetail: DetailBaseItem?
-    @Published var summary: String?
+    @Published var tvShowDetailBaseItem : TvShowDetail?
+        @Published var summary: String?
     var id: Int?
     
     func loadShowData(id: Int) async {
         Task{
             do{
-                self.tvShowDetail = try await self.repo.fetchDetailContent(element: tvShowDetail, type: .tvShows, id: id)
-                self.summary = tvShowDetail?.summary
+                self.tvShowDetailBaseItem = try await self.repo.fetchDetailContent(element: tvShowDetailBaseItem, type: .tvShows, id: id)
+                
+                self.summary = tvShowDetailBaseItem?.summary
             }
             catch{
                 print(error)

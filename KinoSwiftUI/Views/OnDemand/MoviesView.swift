@@ -82,12 +82,12 @@ struct MoviesView: View {
                         //iPhone and iPod specific:
                         if UIDevice.current.userInterfaceIdiom != .pad {
                             
-                            ForEach(viewModel.movies, id: \.title)  { movie in
+                            ForEach(viewModel.movies, id: \.title)  { movieDetailBaseItem in
                                 NavigationLink {
-                                    MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
+                                    MovieDetailScreen(photoURL: movieDetailBaseItem.posterURL, title: movieDetailBaseItem.title, pgRating: movieDetailBaseItem.pgRating, id: movieDetailBaseItem.itemID)
                                 } label: {
                                     ZStack{
-                                        AsyncImage(url: URL(string: movie.photoURL)){ image in
+                                        AsyncImage(url: URL(string: movieDetailBaseItem.photoURL)){ image in
                                             image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
@@ -102,7 +102,7 @@ struct MoviesView: View {
                                         
                                         VStack{
                                             Spacer()
-                                            Text(movie.title)
+                                            Text(movieDetailBaseItem.title)
                                                 .foregroundColor(.white)
                                                 .fontWeight(.medium)
                                                 .padding()
@@ -123,12 +123,12 @@ struct MoviesView: View {
                         //iPadOS Specific:
                         else {
                             LazyVGrid(columns: adaptiveColumns) {
-                                ForEach(category.items, id: \.itemID)  { movie in
+                                ForEach(category.items, id: \.itemID)  { movieDetailBaseItem in
                                     VStack{
                                         NavigationLink {
-                                            MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID)
+                                            MovieDetailScreen(photoURL: movieDetailBaseItem.posterURL, title: movieDetailBaseItem.title, pgRating: movieDetailBaseItem.pgRating, id: movieDetailBaseItem.itemID)
                                         } label: {
-                                            AsyncImage(url: URL(string: movie.photoURL)){ image in
+                                            AsyncImage(url: URL(string: movieDetailBaseItem.photoURL)){ image in
                                                 image
                                                     .resizable()
                                                     .cornerRadius(9)
@@ -136,7 +136,7 @@ struct MoviesView: View {
                                                     .aspectRatio(contentMode: .fit)
                                             } placeholder: {
                                             }
-                                            Text(movie.title).lineLimit(1)
+                                            Text(movieDetailBaseItem.title).lineLimit(1)
                                         }.buttonStyle(PlainButtonStyle())
                                     }
                                 }
@@ -146,11 +146,11 @@ struct MoviesView: View {
 #else
                         //macOS specific:
                         LazyVGrid(columns: adaptiveColumns) {
-                            ForEach(category.items, id: \.self)  { movie in
+                            ForEach(category.items, id: \.self)  { movieDetailBaseItem in
                                 VStack{
                                     
-                                    NavigationLink(destination: MovieDetailScreen(photoURL: movie.posterURL, title: movie.title, pgRating: movie.pgRating, id: movie.itemID), tag: movie, selection: $selectedMovie){
-                                        AsyncImage(url: URL(string: movie.photoURL)){ image in
+                                    NavigationLink(destination: MovieDetailScreen(photoURL: movieDetailBaseItem.posterURL, title: movieDetailBaseItem.title, pgRating: movieDetailBaseItem.pgRating, id: movieDetailBaseItem.itemID), tag: movieDetailBaseItem, selection: $selectedMovie){
+                                        AsyncImage(url: URL(string: movieDetailBaseItem.photoURL)){ image in
                                             image
                                                 .resizable()
                                                 .cornerRadius(9)
@@ -159,7 +159,7 @@ struct MoviesView: View {
                                         } placeholder: {
                                             
                                         } }.buttonStyle(PlainButtonStyle())
-                                    Text(movie.title).lineLimit(1)
+                                    Text(movieDetailBaseItem.title).lineLimit(1)
                                 }
                             }
                         }.padding()

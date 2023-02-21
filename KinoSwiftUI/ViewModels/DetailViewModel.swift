@@ -14,6 +14,7 @@ enum DetailType {
 
 @MainActor
 class DetailViewModel: ObservableObject {
+    @Published private(set) var loadingState: LoadingState = .empty
     let repo = DetailRepo()
     
     @Published var movieDetailBaseItem: MovieDetail?
@@ -25,6 +26,7 @@ class DetailViewModel: ObservableObject {
     
     func loadData(id: Int, type: DetailType) async {
         Task{
+            self.loadingState = .loading
             do{
                 switch type {
                     
@@ -33,10 +35,13 @@ class DetailViewModel: ObservableObject {
                     self.summary = movieDetailBaseItem?.summary
                     self.cinemas = self.movieDetailBaseItem?.cinemas
                     self.people = self.movieDetailBaseItem?.people
+                    self.loadingState = .populated
                     
                 case .tvShowDetails:
                     self.tvShowDetailBaseItem = try await self.repo.fetchDetailContent(element: tvShowDetailBaseItem, type: .tvShows, id: id)
                     self.summary = tvShowDetailBaseItem?.summary
+                    self.loadingState = .populated
+
                 }
             }
             catch{

@@ -172,20 +172,26 @@ struct ShowsView: View {
                     HStack{
                         Button {
                             Task{
-                                 await viewModel.loadNext()
+                                await viewModel.loadNext()
                             }
                         } label: {
                             Text("Load more")
                         }.buttonStyle(BorderedProminentButtonStyle())
                             .onAppear {
-                                    Task{
+                                Task{
                                     await viewModel.loadNext()
-                                    }
+                                }
                             }.padding()
                         
                     }
                 }
             }
+            .refreshable {
+                await viewModel.loadData()
+            }
         }
     }
 }
+
+
+

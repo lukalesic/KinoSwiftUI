@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CinemasView: View {
     @ObservedObject var viewModel: MovieViewModel
-
+    
     @State private var selectedMovie: Movie?
     
     init(viewModel: MovieViewModel) {
